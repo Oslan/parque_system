@@ -6,7 +6,7 @@ import * as domHelper from '../../helpers/dom.helper';
   templateUrl: './teste.template.html'
 })
 export class TesteComponent implements OnInit {
- 
+ nome:string;
   constructor() { }
   ngOnInit() {}
 }
