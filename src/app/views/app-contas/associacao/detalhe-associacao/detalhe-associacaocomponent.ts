@@ -14,11 +14,11 @@ import { AppConfirmService } from '../../../../services/app-confirm/app-confirm.
 import { TransactionsService } from '../../../../services/transactions/transactions.service';
 
 @Component({
-  selector: './detalhe-abertura-conta.component',
-  templateUrl: './detalhe-abertura-conta.component.html',
-  styleUrls: ['./detalhe-abertura-conta.component.css']
+  selector: './detalhe-associacao.component',
+  templateUrl: './detalhe-associacao.component.html',
+  styleUrls: ['./detalhe-associacao.component.css']
 })
-export class DetalheAberturaContaComponent implements OnInit {
+export class DetalheAssociacaoComponent implements OnInit {
   detalhe:TransacaoContaCartao;
  
   constructor(private route:ActivatedRoute,

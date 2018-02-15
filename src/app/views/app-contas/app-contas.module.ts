@@ -26,9 +26,9 @@ import { ContasRoutes } from "./app-contas.routing";
 import { AppLoaderModule } from '../../services/app-loader/app-loader.module';
 import { AppConfirmModule } from '../../services/app-confirm/app-confirm.module';
 
-import { AberturaContaComponent } from './abertura/abertura-conta.component';
+import { AssociacaoContaComponent } from './associacao/associacao-conta.component';
 import { ExtratoFormComponent } from './extrato/extrato.component';
-import { DetalheAberturaContaComponent } from './abertura/detalhe-abertura/detalhe-abertura-conta.component';
+import { DetalheAssociacaoComponent } from './associacao/detalhe-associacao/detalhe-associacaocomponent';
 import { DetalheContaComponent } from './transacoes/detalhe/detalhe-conta.component';
 import { TransacoesContaComponent } from './transacoes/transacoes-conta.component';
 
@@ -60,10 +60,10 @@ import { ContaService } from './app-contas.service';
     CommonDirectivesModule,
     RouterModule.forChild(ContasRoutes)
   ],
-  declarations: [AberturaContaComponent,
+  declarations: [AssociacaoContaComponent,
                  ExtratoFormComponent,
                  DetalheContaComponent,
-                 DetalheAberturaContaComponent,
+                 DetalheAssociacaoComponent,
                  TransacoesContaComponent
                  ],
   providers:[ContaService]

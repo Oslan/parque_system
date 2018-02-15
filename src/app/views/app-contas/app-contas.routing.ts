@@ -1,19 +1,18 @@
 import { Routes } from '@angular/router';
 
 import { ExtratoFormComponent } from './extrato/extrato.component';
-import { AberturaContaComponent } from './abertura/abertura-conta.component';
+import { AssociacaoContaComponent } from './associacao/associacao-conta.component';
 import { DetalheContaComponent } from './transacoes/detalhe/detalhe-conta.component';
-import { DetalheAberturaContaComponent } from './abertura/detalhe-abertura/detalhe-abertura-conta.component';
+import { DetalheAssociacaoComponent } from './associacao/detalhe-associacao/detalhe-associacaocomponent';
 import { TransacoesContaComponent } from './transacoes/transacoes-conta.component';
 
-export const ContasRoutes: Routes = [
-         
+export const ContasRoutes: Routes = [      
     {
     	path: '',
     	children: [
       {
-          path: 'abertura-conta',
-          component: AberturaContaComponent,
+          path: 'associar-conta',
+          component: AssociacaoContaComponent,
           data: { title: 'Abertura de Conta', breadcrumb: 'ABERTURA DE CONTA' }
       },
     	{
@@ -32,8 +31,8 @@ export const ContasRoutes: Routes = [
           data: { title: 'DETALHE CONTA', breadcrumb: 'DETALHE CONTA' }
       },
       {
-          path: 'transacoes/abertura/detalhe-abertura/:id',
-          component: DetalheAberturaContaComponent,
+          path: 'transacoes/associacao/detalhe-associacao/:id',
+          component: DetalheAssociacaoComponent,
           data: { title: 'DETALHE', breadcrumb: 'DETALHE' }
       }
         

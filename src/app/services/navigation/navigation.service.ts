@@ -601,7 +601,7 @@ export class NavigationService {
       icon: 'account_box',
       state: 'contas',
        sub: [
-        {name: 'ViNCULAR', state: 'abertura-conta'},
+        {name: 'VINCULAR', state: 'associar-conta'},
         {name: 'TRANSAÇÕES', state: 'transacoes-conta'},
         {name: 'EXTRATO', state: 'extrato'}
       ]

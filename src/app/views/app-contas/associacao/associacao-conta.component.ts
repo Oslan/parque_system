@@ -19,16 +19,16 @@ import { TransactionsService } from '../../../services/transactions/transactions
 import { ContaService } from '../app-contas.service';
 
 @Component({
-  selector: './abertura-conta.component',
-  templateUrl: './abertura-conta.component.html',
-  styleUrls: ['./abertura-conta.component.css']
+  selector: './associacao-conta.component',
+  templateUrl: './associacao-conta.component.html',
+  styleUrls: ['./associacao-conta.component.css']
 })
 
 /**
 * @author Caio
 *
 */
-export class AberturaContaComponent implements OnInit {
+export class AssociacaoContaComponent implements OnInit {
 
  //@ViewChild('formCartao') formTarefa:NgForm;
   clientCtrl: FormControl;
@@ -118,7 +118,8 @@ export class AberturaContaComponent implements OnInit {
      
       this.transacaoContaCartao = this.transactionsService.finalizarProcessoConta(conta,identificacao,this.valor);
       this.openSnackBar("Cartão Adcionado!","Fechar");
-      this.router.navigate(['/contas/transacoes/abertura/detalhe-abertura/'+
+     
+      this.router.navigate(['/contas/transacoes/associacao/detalhe-associacao/'+
                             this.transacaoContaCartao.id]);
 
    }

@@ -8,7 +8,7 @@
   </tr>
    <tr *ngFor="let transacao of transacoes">
       <td class="text-center corTransacao" >
-      <a class="link-transaction" [routerLink]="['/contas/transacoes/detalhe',transacao.id]" href="#">
+      <a class="link-transaction" [routerLink]="['/contas/transacoes/associacao/detalhe-associacao',transacao.id]" href="#">
      {{transacao.id}}
     </a>
       </td>
@@ -18,7 +18,8 @@
       </td>
       <td class="text-center ">
         <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
-    <button [routerLink]="['/contas/transacoes/detalhe',transacao.id]" mat-mini-fab color="primary" class="mr-1"><mat-icon>visibility</mat-icon></button>
+      
+    <button [routerLink]="['/contas/transacoes/associacao/detalhe-associacao',transacao.id]" mat-mini-fab color="primary" class="mr-1"><mat-icon>visibility</mat-icon></button>
       </td>
   </tr>
 
