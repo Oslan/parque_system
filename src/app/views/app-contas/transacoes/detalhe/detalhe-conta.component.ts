@@ -31,7 +31,7 @@ export class DetalheContaComponent implements OnInit {
 			  this.transacao = 
      		this.transactionsService.loadTransactionsContaCartaoById(id);
 
-           
+           console.log("OI");
          if(!this.transacao){
           setTimeout(() => {
              this.showSnackBar("Nenhuma dado encontrado!","Fechar");
@@ -40,10 +40,10 @@ export class DetalheContaComponent implements OnInit {
          }else{
            
          this.nCartao = this.transactionsService.loadAccountsById(this.transacao.conta.id).cartao.identificacao;
-
+          console.log("CARTAO ATUAL" + this.nCartao);
          setTimeout(() => {
              this.showSnackBar("Detalhe da Conta","Fechar");
-           },500);
+           },300);
          }  
         
   }
