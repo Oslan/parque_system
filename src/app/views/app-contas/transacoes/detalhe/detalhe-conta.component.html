@@ -1,0 +1,113 @@
+
+<mat-card class="p-0"  >
+    <mat-card-title class="mat-bg-primary">
+         <div class="card-title-text">Dados </div>
+         <mat-divider></mat-divider>
+    </mat-card-title>
+
+<mat-card-content *ngIf="transacao">
+
+    <div fxLayout="row" fxLayoutWrap="wrap">
+        <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                                    <div class="pb-1">
+                                        <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+
+                                            <div class="propic text-center">
+                                                <img src="assets/images/{{transacao.conta.client.url}}" alt="">
+                                   <div class="profile-title text-center mb-1">
+        <div class="main-title"> 
+          <b>{{transacao.conta.client.name}}</b>
+        </div>
+        <div class="subtitle mb-05">
+          <b>Nº Conta : </b>{{transacao.conta.cod}}
+        </div>
+        <div class="subtitle mb-05"> 
+          <b>Nº Transação : </b>{{transacao.cod}}
+        </div>
+        
+        <div class="subtitle mb-05">
+          <b>Nº Cartão : </b>{{transacao.conta.cartao.identificacao}}
+        </div>
+        <div class="text-muted"></div>
+          <div class="profile-actions text-center mb-1">
+
+            <div *ngIf="transacao.conta.cartao && (transacao.conta.cartao.identificacao == nCartao )">
+                <button mat-raised-button class="green-card" ><mat-icon>credit_card</mat-icon> Cartão Habilitado</button>
+            </div>
+
+            <div *ngIf="transacao.conta.cartao.identificacao != nCartao">
+                <button mat-raised-button class="cinza-card" >Cartão Desabilitado</button>
+            </div>
+           
+           
+           
+             <div *ngIf="!transacao.conta.cartao">
+                <button mat-raised-button class="red-card" >Sem Cartão</button>
+            </div>
+          
+            
+          </div>
+      </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+        </div>
+    </div>
+
+        <div fxLayout="row" fxLayoutWrap="wrap">
+
+            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+
+                                    <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                      
+                                      matInput
+                                      name="id"
+                                      placeholder="Data de Associação do Cartão"
+                                      value=" {{transacao.data | date: 'dd/MM/yy - hh:mm:ss a'  }}">
+                                      </mat-form-field>
+                                    </div> 
+
+                                    <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                      
+                                      matInput
+                                      name="n"
+                                      placeholder="Email"
+                                      value="{{transacao.conta.client.email}} ">
+                                      </mat-form-field>
+                                    </div> 
+            </div>
+        
+
+        </div>
+
+             
+   
+      <button 
+            mat-raised-button 
+            color="primary" 
+            [routerLink]="['/contas/abertura-conta']"
+            ><mat-icon>add_to_queue</mat-icon> Vincular Nova Conta </button>
+
+      <button 
+            mat-raised-button 
+            color="primary" 
+              [routerLink]="['/contas/transacoes-conta']"
+            ><mat-icon>dvr</mat-icon> Minhas Transacões</button>
+
+      <button *ngIf="transacao.transacao"
+            mat-raised-button 
+            color="accent" 
+            [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.transacao.id]"
+            ><mat-icon>print</mat-icon> Imprimir Recarga</button>
+
+
+</mat-card-content>
+
+</mat-card>
+
+
+

@@ -1,0 +1,72 @@
+
+<mat-card class="p-0"  >
+    <mat-card-title class="mat-bg-primary">
+         <div class="card-title-text">Dados </div>
+         <mat-divider></mat-divider>
+    </mat-card-title>
+
+<mat-card-content *ngIf="detalhe">
+
+    <div fxLayout="row" fxLayoutWrap="wrap">
+        <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                                    <div class="pb-1">
+                                        <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+                                            <div class="propic text-center">
+                                                <img src="assets/images/{{detalhe.conta.client.url}}" alt="">
+                                   <div class="profile-title text-center mb-1">
+        <div class="main-title"> <b>{{detalhe.conta.client.name}}</b></div>
+        <div class="subtitle mb-05">Email : <b>{{detalhe.conta.client.email}}</b></div>
+        <div class="subtitle mb-05">Nº Conta : <b>{{detalhe.conta.cod}}</b></div>
+
+        <div class="subtitle mb-05">Nº Transação : <b>{{detalhe.id}}</b></div>
+        <div class="subtitle mb-05">Nº Cartão : <b>{{detalhe.conta.cartao.identificacao}}</b></div>
+        <div class="subtitle mb-05">Data : <b>{{detalhe.data | date :"dd/MM/yyyy"}}</b></div>
+
+        <div class="text-muted"></div>
+          <div class="profile-actions text-center mb-1">
+            <div *ngIf="detalhe.conta.cartao">
+                <button mat-raised-button style="background-color: green; color:#fff;">Cartão Habilitado</button>
+            </div>
+             <div *ngIf="!detalhe.conta.cartao">
+                <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
+            </div>
+          
+            
+          </div>
+      </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+        </div>
+    </div>
+
+        
+
+
+ <div class="pb-1">
+      <button 
+            mat-raised-button 
+            color="primary" 
+            [routerLink]="['/contas/abertura-conta']"
+            ><mat-icon>credit_card</mat-icon> Nova Conta</button>
+
+      <button 
+            mat-raised-button 
+            color="primary" 
+              [routerLink]="['/contas/transacoes-conta']"
+            ><mat-icon>dvr</mat-icon> Minhas Transacões</button>
+
+      <button *ngIf="detalhe.transacao"
+            mat-raised-button 
+            color="accent" 
+            [routerLink]="['/bilheteria/transacoes/extrato-detalhe',detalhe.transacao.id]"
+            ><mat-icon>print</mat-icon> Imprimir Recarga</button>
+
+</div>
+</mat-card-content>
+
+
+</mat-card>
+
+
+

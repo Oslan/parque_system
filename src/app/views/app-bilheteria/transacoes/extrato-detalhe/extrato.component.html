@@ -1,0 +1,116 @@
+<mat-card class="p-0">
+    <mat-card-title class="mat-bg-primary">
+             <div class="card-title-text">Comprovante - Detalhado
+             </div>
+    </mat-card-title>
+     
+        <mat-card-content *ngIf="comprovante"  >
+           
+            <div class="card-title-text text-center">Comprovante de Recarga</div>
+             <br/>
+               <mat-divider></mat-divider>
+
+             <div class="pb-1">
+                       
+                    <div fxLayout="row" fxLayoutWrap="wrap">
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+
+                               <div class="card-title-text">Nº Transação</div>
+                                  <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                      disabled
+                                      matInput
+                                      name="id"
+                                      placeholder="cod"
+                                      value="{{comprovante.id}}">
+                                     </mat-form-field>
+                                     <small> </small>
+                                     <small></small>
+                                  </div> 
+                                 <div class="card-title-text">Data/Hora</div>
+                                  <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                      disabled
+                                      matInput
+                                      name="id"
+                                      placeholder="Data"
+                                     value="{{comprovante.data | date:'dd/MM/yy' }}">
+                                     </mat-form-field>
+                                     <small> </small>
+                                     <small></small>
+                                  </div> 
+ 
+                                   <div class="card-title-text">Valor Carregado</div>
+                                   <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                      disabled
+                                      matInput
+                                      name="id"
+                                      placeholder="Recarga "
+                                      value="{{comprovante.valor}}">
+                                      </mat-form-field>
+                                      <small> </small>
+                                      <small></small>
+                                    </div> 
+
+                        </div>
+                     
+     
+
+               
+                       <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1" >
+                             <div class="card-title-text">Nº Cartão</div>
+                             <div class="pb-1">
+                                 <mat-form-field class="full-width">
+                                    <input
+                                     disabled
+                                    matInput
+                                    name="id"
+                                     placeholder="cod"
+                                     value="{{comprovante.conta.cartao.identificacao}}">
+                                  </mat-form-field>
+                                    <small> </small>
+                                    <small></small>
+                             </div> 
+                      
+          
+                             <div class="card-title-text">Nome</div>
+                             <div class="pb-1">
+                                 <mat-form-field class="full-width">
+                                    <input
+                                    disabled
+                                    matInput
+                                    name="id"
+                                     placeholder="Cliente"
+                                     value="{{comprovante.conta.client.name}}">
+                                  </mat-form-field>
+                                    <small> </small>
+                                    <small></small>
+                             </div> 
+
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+        </mat-card-content>
+     
+     
+
+
+     
+
+</mat-card>
+
+   <mat-card-content >
+     <div class="margin-333">    
+       
+   <button *ngIf="comprovante" mat-raised-button color="accent" class="mt-5">Imprimir</button> 
+   <button [routerLink]="['/bilheteria/recarga']" mat-raised-button color="primary" class="mt-5">Nova Recarga</button> 
+   <button [routerLink]="['/bilheteria/transacoes']" mat-raised-button color="accent" class="mt-5">Transações</button> 
+    </div>
+ </mat-card-content>

@@ -1,0 +1,112 @@
+<mat-card class="p-0">
+  <mat-card-title class="mat-bg-primary">
+
+    <div class="card-title-text">     <mat-icon><small>credit_card</small></mat-icon> <mat-icon><small>contacts</small></mat-icon>  Associação de Cartão </div>
+
+    <mat-divider></mat-divider>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-horizontal-stepper [linear]="true" >
+      <mat-step  [stepControl]="firstFormGroup" >
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Número do Cartão</ng-template>
+          <mat-form-field class="pt-1 pb-1">
+            <input matInput placeholder="Nº Cartão"  [matAutocomplete]="auto"  formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Nome do Cliente</ng-template>
+          <mat-form-field class="pt-1 pb-1">
+            <input matInput placeholder="Nome do Cliente" [matAutocomplete]="clients" formControlName="secondCtrl" required>
+              <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </mat-option>
+    </mat-autocomplete>
+
+     <mat-autocomplete #clients="matAutocomplete">
+      <mat-option *ngFor="let state of filteredClients | async" [value]="state.name">
+        {{ state.name }}
+      </mat-option>
+    </mat-autocomplete>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Voltar</button>
+            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finalizar
+
+
+        </ng-template>
+      
+        <div class="pb-1 mb-1 full-width ">
+            <mat-card >
+        <div class="height-50 center mat-bg-cartao transicao">
+             <div  style="color:#F9BF3B; " class="card-title-text text-center"><p style="margin-top: 4px; font-family: monospace; font-size: 16px; text-shadow: -1px -1px #C8F7C5, 1px 1px #333; padding: 2px;">Cartão de Idendificação</p></div>
+             <div fxLayout="row" fxLayoutWrap="wrap" class="margin-cartao">
+                            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1" >
+                       
+                                   <div class="pb-1" style="margin-top: 5px;">
+                                      <mat-form-field class="full-width">
+                                      <input style="font-size: 16px; color:#F9BF3B; text-shadow: -1px -1px #C8F7C5, 1px 1px #333;letter-spacing: 2px; font-family: monospace;" 
+                                      [(ngModel)]="firstFormGroup.value.firstCtrl"
+                                      matInput
+                                     
+                                      disabled
+                                      placeholder="Nº Cartão"
+                                      value="">
+                                      </mat-form-field>
+                                 
+                                    </div> 
+
+                                   
+                                   <div class="pb-1" style="margin-top: -20px; ">
+                                      <mat-form-field class="full-width">
+                                      <input style="font-size: 16px; color:#F9BF3B; text-shadow: -1px -1px #C8F7C5, 1px 1px #333; font-family: monospace;" 
+                                      [(ngModel)]="secondFormGroup.value.secondCtrl"
+                                      matInput
+                                      
+                                      disabled
+                                      placeholder="Cliente"
+                                      value="">
+                                      </mat-form-field>
+                                 
+                                    </div> 
+
+                        </div>
+
+
+                    </div>
+                   
+            <p  class="height-box mat-bg-black full-width">i
+            </p>
+           
+      
+            
+            </div>
+</mat-card>
+         </div>
+
+
+   
+        <div>
+          <button mat-raised-button color="accent" matStepperPrevious>Voltar</button>
+          <button mat-raised-button color="primary" (click)="submit()">Associar Cartão</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+
+    
+
+
+  </mat-card-content>
+</mat-card>

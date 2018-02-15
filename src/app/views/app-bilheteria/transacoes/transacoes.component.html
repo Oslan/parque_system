@@ -1,0 +1,36 @@
+
+<div class="mat-box-shadow margin-333">
+<table class="table table-striped">
+  <tr>
+  	<th class="text-center cor-table-transaction-th">Cod Transação</th>
+    <th class="cor-table-transaction-th">Cliente</th>
+    <th class="text-center cor-table-transaction-th">Nº Cartão</th>
+    <th class="texte-center cor-table-transaction-th">Data/Hora</th>
+    <th class="texte-center cor-table-transaction-th">Comprovante</th>
+  	
+  </tr>
+   <tr *ngFor="let transacao of transacoes">
+    	<td class="text-center corTransacao" >
+    	<a class="link-transaction" [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.id]" href="#">
+		 {{transacao.id}}
+		</a>
+   		</td>
+   		<td class="">
+		 {{transacao.conta.client.name}}
+   		</td>
+   		<td class="text-center cor-table-transaction-th">
+		 {{transacao.conta.cartao.identificacao}}
+   		</td>
+   		<td class="corData">
+		 {{transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
+   		</td>
+   		<td class="text-center ">
+   	    <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
+		<button [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.id]" mat-mini-fab color="primary" class="mr-1"><mat-icon>visibility</mat-icon></button>
+   		</td>
+	</tr>
+
+
+
+</table>
+</div>

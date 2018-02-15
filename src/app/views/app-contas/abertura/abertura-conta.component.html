@@ -1,0 +1,246 @@
+<mat-card class="p-0">
+  <mat-card-title class="mat-bg-primary">
+    <div class="card-title-text">Cliente </div>
+    <mat-divider></mat-divider>
+  </mat-card-title>
+
+
+  <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Pesquisar Conta " [matAutocomplete]="auto"
+        [formControl]="clientCtrl" value="{{clientCtrl.value?.client?.name}}">
+      </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let conta of filteredClients | async" [value]="conta" style="height: 90px; color: #3A539B;">
+
+      	 <p style="margin: 0px;"><strong>Nome:: </strong> {{ conta.client.name }}</p>
+         <p><strong>Cod:: </strong> {{ conta.client.id }}</p>
+
+        </mat-option>
+      </mat-autocomplete>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card class="p-0"  *ngIf="clientCtrl.value?.id">
+	     <mat-card-title class="mat-bg-default">
+   		   <div class="card-title-text">Dados </div>
+    	   <mat-divider></mat-divider>
+  	   </mat-card-title>
+
+  <mat-card-content>
+
+	          <div fxLayout="row" fxLayoutWrap="wrap">
+		              <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+  				              <div class="pb-1">
+                           <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+                             <div class="propic text-center">
+                             <img src="assets/images/{{clientCtrl.value?.client?.url}}" alt="">
+                                <div class="profile-title text-center mb-1">
+                                  <div class="main-title"> <b>{{clientCtrl.value?.client?.name}}</b>
+                                  </div>
+                                  <div class="subtitle mb-05"><b>Nº Conta :</b> {{clientCtrl.value?.cod}} 
+                                  </div>
+                                  <div *ngIf="clientCtrl.value?.cartao" class="subtitle mb-05"><b>Nº Cartão :</b>
+                                  {{clientCtrl.value?.cartao?.identificacao}} 
+                                  </div>
+                                  <div class="text-muted"></div>
+                                      <div class="profile-actions text-center mb-1">
+                                          <div *ngIf="clientCtrl.value?.cartao">
+                                              <button mat-raised-button style="background-color: green; color:#fff;"> Cartão Habilitado
+                                              </button>
+                                          </div>
+                                          <div *ngIf="!clientCtrl.value?.cartao">
+                                                <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
+                                          </div>
+                                      </div>
+                                </div>
+                              </div>
+                            </mat-card>
+					              </div>
+  	              </div>
+              </div>
+            
+
+      	    <div fxLayout="row" fxLayoutWrap="wrap">
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                        
+                        <div class="pb-1">
+                            <mat-form-field class="full-width">
+                                <input
+
+                                      matInput
+                                      name=""
+                                      placeholder="Email"
+                                      value=" {{clientCtrl.value?.client?.email}} ">
+                            </mat-form-field>
+                        </div>
+
+                                    <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+
+                                      matInput
+                                      name=""
+                                      placeholder="Bairro"
+                                      value=" {{clientCtrl.value?.client?.endereco?.bairro}} ">
+                                      </mat-form-field>
+
+                                   	</div>
+         	        </div>
+
+			<div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+
+                                    <div class="pb-1">
+                                        <mat-form-field class="full-width">
+                                          <input
+
+                                          matInput
+                                          name="id"
+                                          placeholder="Rua"
+                                          value=" {{clientCtrl.value?.client?.endereco?.rua}} ">
+                                        </mat-form-field>
+                     				        </div>
+
+                                    <div class="pb-1">
+                                        <mat-form-field class="full-width">
+                                          <input
+
+                                          matInput
+                                          name="id"
+                                          placeholder="Nº"
+                                          value="{{clientCtrl.value?.client.endereco?.numero}} ">
+                                        </mat-form-field>
+                           			    </div>
+            </div>
+
+
+            		
+
+             
+		</div>
+
+
+
+
+
+
+
+</mat-card-content>
+</mat-card>
+
+
+
+  <mat-card class="p-0" *ngIf="clientCtrl.value?.id">
+  <mat-card-title class="mat-bg-primary">
+
+    <div class="card-title-text"><mat-icon><small>credit_card</small></mat-icon> <mat-icon><small>contacts</small></mat-icon>  Associação de Cartão </div>
+
+    <mat-divider></mat-divider>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-horizontal-stepper [linear]="true" >
+      <mat-step  [stepControl]="firstFormGroup" >
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Número do Cartão</ng-template>
+          <mat-form-field class="pt-1 pb-1">
+            <input matInput placeholder="Nº Cartão"  formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form>
+          <ng-template matStepLabel>Nome do Cliente</ng-template>
+          <mat-form-field class="pt-1 pb-1">
+            <input
+
+                            name="valor"
+                            matInput
+                            disabled
+                            value="{{clientCtrl.value?.client?.name}}">
+
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="accent" matStepperPrevious>Voltar</button>
+            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+
+        <ng-template matStepLabel>Finalizar
+
+
+        </ng-template>
+
+        <div class="pb-1 mb-1 full-width ">
+            <mat-card >
+        <div class="height-50 center mat-bg-cartao transicao">
+             <div  style="color:#F9BF3B; " class="card-title-text text-center"><p style="margin-top: 4px; font-family: monospace; font-size: 16px; text-shadow: -1px -1px #C8F7C5, 1px 1px #333; padding: 2px;">Cartão de Idendificação</p></div>
+           
+             <div fxLayout="row" fxLayoutWrap="wrap" class="margin-cartao">
+                            <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1" >
+
+                                   <div class="pb-1" style="margin-top: 5px;">
+                                      <mat-form-field class="full-width">
+                                      <input style="font-size: 16px; color:#F9BF3B; text-shadow: -1px -1px #C8F7C5, 1px 1px #333;letter-spacing: 2px; font-family: monospace;"
+                                      [(ngModel)]="firstFormGroup.value.firstCtrl"
+                                      matInput
+
+                                      disabled
+                                      placeholder="Nº Cartão"
+                                      value="">
+                                      </mat-form-field>
+
+                                    </div>
+
+
+                                   <div class="pb-1" style="margin-top: -20px; ">
+                                      <mat-form-field class="full-width">
+                                      <input style="font-size: 16px; color:#F9BF3B; text-shadow: -1px -1px #C8F7C5, 1px 1px #333; font-family: monospace;"
+
+                                      matInput
+
+                                      disabled
+                                      placeholder="Cliente"
+                                      value="{{clientCtrl.value?.client?.name}}">
+                                      </mat-form-field>
+
+                                    </div>
+
+                            <div class="pb-1" style="margin-top: -20px;">
+                        <mat-form-field class="full-width">
+                            <input
+                            [(ngModel)]="valor"
+                            name="valor"
+                            matInput
+                            placeholder="Valor da recarga : Opcional"
+                            value="">
+                        </mat-form-field>
+                     
+                    </div> 
+                        </div>
+                    </div>
+
+                
+            </div>
+</mat-card>
+
+         </div>
+    
+
+
+
+        <div>
+          <button mat-raised-button color="accent" matStepperPrevious>Voltar</button>
+
+          <button mat-raised-button color="primary" (click)="openLoaderAssociarContaCartao()">Confirmar </button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card-content>
+</mat-card>

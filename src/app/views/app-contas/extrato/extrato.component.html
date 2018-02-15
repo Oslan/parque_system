@@ -1,0 +1,151 @@
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Extrato Cartão</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form  >
+            <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input
+                           
+                            matInput
+                            name="id"
+                            placeholder="Código do cartão (Min Length: 10, Max Length: 10)"
+                            value="">
+                        </mat-form-field>
+                        <small> </small>
+                        <small>
+                         </small>
+                    </div> 
+                </div>
+            </div>
+
+            <button 
+            mat-raised-button 
+            color="primary" 
+           
+            >Pesquisar</button>
+          
+        </form>
+    </mat-card-content>
+
+
+</mat-card>
+
+
+<mat-card class="p-0">
+    <mat-card-title class="mat-bg-primary">
+             <div class="card-title-text">Dados
+             </div>
+    </mat-card-title>
+     
+        <mat-card-content  >
+             <div class="pb-1">
+                       
+                    <div fxLayout="row" fxLayoutWrap="wrap">
+                            <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                 <div class="card-title-text">Número do Cartão</div>
+                                  <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                     
+                                      matInput
+                                      name="id"
+                                      placeholder="id cartao"
+                                     value="">
+                                     </mat-form-field>
+                                     <small> </small>
+                                     <small></small>
+                                  </div> 
+ 
+                                   <div class="card-title-text">Limite do Cartão</div>
+                                   <div class="pb-1">
+                                      <mat-form-field class="full-width">
+                                      <input
+                                     
+                                      matInput
+                                      name="id"
+                                      placeholder="Limite"
+                                      value="">
+                                      </mat-form-field>
+                                      <small> </small>
+                                      <small></small>
+                                    </div> 
+
+                        </div>
+                     
+     
+
+               
+                       <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1" >
+                             <div class="card-title-text">Saldo do Cartão</div>
+                             <div class="pb-1">
+                                 <mat-form-field class="full-width">
+                                    <input
+                                    
+                                    matInput
+                                    name="id"
+                                     placeholder="Saldo"
+                                     value="">
+                                  </mat-form-field>
+                                    <small> </small>
+                                    <small></small>
+                             </div> 
+                      
+          
+                             <div class="card-title-text">Nome do Cliente</div>
+                             <div class="pb-1">
+                                 <mat-form-field class="full-width">
+                                    <input
+                                   
+                                    matInput
+                                    name="id"
+                                     placeholder="Nome"
+                                     value="">
+                                  </mat-form-field>
+                                    <small> </small>
+                                    <small></small>
+                             </div> 
+                        </div>
+                    </div>
+                </div>
+
+              <form  >
+            <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input
+                       
+                            name="valor"
+                            matInput
+                            placeholder="Valor da recarga (Min Length: 10, Max Length: 10)"
+                            value="">
+                        </mat-form-field>
+                        <small> </small>
+                        <small>
+                        </small>
+                    </div> 
+                </div>
+            </div>
+
+            <button 
+            mat-raised-button 
+            color="primary" 
+           
+           
+            >Carregar Cartão</button>
+          
+        </form>
+
+        </mat-card-content>
+     
+        <mat-card-content >
+            Nenhum cartao encontrado!
+        </mat-card-content>
+     
+
+</mat-card>

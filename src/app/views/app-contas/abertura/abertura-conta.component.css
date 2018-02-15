@@ -1,0 +1,39 @@
+.height-50{
+	width: 340px;
+	height: 200px;
+	box-shadow: 4px 4px 5px #333;
+   -webkit-box-shadow: 4px 4px 5px #333;
+   -moz-box-shadow: 4px 4px 5px #333;
+
+}
+
+.margin-cartao{
+  margin: 10px;
+ 
+  margin-bottom: 5px;
+}
+
+.height-box{
+ 
+	width: 340px;
+	height: 26px;
+	margin-top: -16px;
+	position: relative;
+}
+.center{
+	margin: auto;
+}
+.transicao:hover{
+
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+}
+
+.mat-bg-black{
+  background-color: #000;
+}
+
+.mat-bg-cartao{
+	 background-color: #E9D460;
+}
