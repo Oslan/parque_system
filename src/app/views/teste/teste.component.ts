@@ -7,6 +7,8 @@ import * as domHelper from '../../helpers/dom.helper';
 })
 export class TesteComponent implements OnInit {
  nome:string;
+ sobrenome:string;
   constructor() { }
   ngOnInit() {}
+
 }
