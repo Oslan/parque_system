@@ -5,6 +5,7 @@ import { AssociacaoContaComponent } from './associacao/associacao-conta.componen
 import { DetalheContaComponent } from './transacoes/detalhe/detalhe-conta.component';
 import { DetalheAssociacaoComponent } from './associacao/detalhe-associacao/detalhe-associacaocomponent';
 import { TransacoesContaComponent } from './transacoes/transacoes-conta.component';
+import { DetalhadoComponent } from './extrato/detalhado/detalhado.component';
 
 export const ContasRoutes: Routes = [      
     {
@@ -19,6 +20,11 @@ export const ContasRoutes: Routes = [
       		path: 'extrato',
       		component: ExtratoFormComponent,
       		data: { title: 'Extrato', breadcrumb: 'EXTRATO' }
+      },
+      {
+          path: 'extrato/detalhado',
+          component: DetalhadoComponent,
+          data: { title: 'Detalhado', breadcrumb: 'DETALHADO' }
       },
       {
           path: 'transacoes-conta',

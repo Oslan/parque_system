@@ -82,8 +82,6 @@ export class AssociacaoContaComponent implements OnInit {
      secondCtrl: ['', Validators.nullValidator]
     });
 
-
-
   }
 
    filterClients(val:Conta) {

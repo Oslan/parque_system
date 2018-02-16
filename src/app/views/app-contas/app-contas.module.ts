@@ -31,6 +31,7 @@ import { ExtratoFormComponent } from './extrato/extrato.component';
 import { DetalheAssociacaoComponent } from './associacao/detalhe-associacao/detalhe-associacaocomponent';
 import { DetalheContaComponent } from './transacoes/detalhe/detalhe-conta.component';
 import { TransacoesContaComponent } from './transacoes/transacoes-conta.component';
+import { DetalhadoComponent } from './extrato/detalhado/detalhado.component';
 
 import { ContaService } from './app-contas.service';
 
@@ -64,7 +65,8 @@ import { ContaService } from './app-contas.service';
                  ExtratoFormComponent,
                  DetalheContaComponent,
                  DetalheAssociacaoComponent,
-                 TransacoesContaComponent
+                 TransacoesContaComponent,
+                 DetalhadoComponent
                  ],
   providers:[ContaService]
 
