@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Transacao } from '../../shared/Transacao';
+import { TransacaoConta } from '../../shared/TransacaoConta';
+import { TipoTransacaoConta } from '../../shared/TipoTransacaoConta';
 import { Conta } from '../../shared/Conta';
+
+import { TransactionsService } from '../../services/transactions/transactions.service';
 
 
 @Injectable()
 export class TransacaoRecargaService{
 
 
-	constructor(){}
-
+	constructor(private transactionsService:TransactionsService){}
 
     findTransaction(id:number):Transacao{
        const transactions = this.loadTransactions();
@@ -43,7 +46,7 @@ export class TransacaoRecargaService{
 
 
    finalizarProcessoConta(conta:Conta,val:string):Transacao{
-
+       let transacaoConta:TransacaoConta=null;
        var contas:Conta[] = this.loadAccounts();
        let contaTemp:Conta =null;
        
@@ -53,6 +56,14 @@ export class TransacaoRecargaService{
                //=+ atribui o valor independente do valor anterior
               // cartao.conta.saldo += parseFloat(val);
               //cartao.saldo=20;
+               transacaoConta = new TransacaoConta(new Date().getTime(),
+                                                         new Date().getTime().toString()+'cc',
+                                                         new Date(),
+                                                         conta,
+                                                         TipoTransacaoConta.MENSAGEM);
+
+
+
               contas[index].saldo += parseFloat(val);
               }
             //  objs[index]=cartao;
@@ -67,6 +78,8 @@ export class TransacaoRecargaService{
        console.log("CONTA " + contaTemp.id);
        let  recarga = new Transacao(new Date().getTime(),new Date().getTime().toString()+'c',new Date(),parseFloat(val),contaTemp);
        this.addTransaction(recarga);
+       transacaoConta.transacao=recarga;
+       this.transactionsService.addTransactionConta(transacaoConta);
 
        return recarga;
 

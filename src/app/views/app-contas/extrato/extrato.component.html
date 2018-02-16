@@ -54,19 +54,17 @@
                                 <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
                                 <div class="text-muted"></div>
                                 <div class="profile-actions text-center mb-1">
-                                  
                                         <table class="table">
                                             <tr *ngFor="let transacao of transactions">
                                                 <td>
                                                     <b>{{transacao.tipoTransacaoConta}}</b> - <b>R$ {{transacao.transacao.valor}}</b> - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
                                                      <br />
-                                                     <b>Saldo</b> : {{transacao.conta.saldo}}
+                                                     <b>Saldo</b> : R$ {{transacao.conta.saldo}}
                                                 </td>
                                             </tr>
                                         </table>
-                                    
                                 </div>
-                                     <b>Saldo Atual</b> : {{conta.saldo}}
+                                     <b>Saldo Atual</b> : R$ {{conta.saldo}}
                             </div>
                     </div>
                 </mat-card>
