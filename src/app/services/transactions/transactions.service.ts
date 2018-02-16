@@ -5,7 +5,9 @@ import { Client } from '../../shared/Client';
 import { Cartao } from '../../shared/Cartao';
 import { Conta } from '../../shared/Conta';
 import { Endereco } from '../../shared/Endereco';
+import { TipoTransacaoConta } from '../../shared/TipoTransacaoConta';
 import { TransacaoContaCartao } from '../../shared/TransacaoContaCartao';
+import { TransacaoConta } from '../../shared/TransacaoConta';
 
 @Injectable()
 export class TransactionsService{
@@ -18,6 +20,11 @@ export class TransactionsService{
 
   loadTransactionsContaCartao():TransacaoContaCartao[]{
         const transacoes = localStorage['transactions_conta_cartao'];
+          return transacoes ? JSON.parse(transacoes) : [];
+  }
+
+  loadTransactionsConta():TransacaoConta[]{
+        const transacoes = localStorage['transactions_conta'];
           return transacoes ? JSON.parse(transacoes) : [];
   }
 
@@ -54,10 +61,13 @@ export class TransactionsService{
             //});
           
           //contas= contas.filter(conta=> conta.cartao.identificacao == cod);
-           return contas.find(conta=> conta.cartao.identificacao == cod);
+          return contas.find(conta=> conta.cartao.identificacao == cod);
   }
 
-
+   loadTransactionContaById(id:number):TransacaoConta[]{
+        var trans = this.loadTransactionsConta();
+          return trans.filter(transacao => transacao.conta.id===id);
+  }
 
   loadTransactionById(id:number):Transacao{
         var trans = this.loadTransactions();
@@ -79,6 +89,13 @@ export class TransactionsService{
           transactions.push(transacao);
 
             localStorage['transactions_conta_cartao']= JSON.stringify(transactions);
+  }
+
+    addTransactionConta(transacao:TransacaoConta):void{
+        const transactions=this.loadTransactionsConta();
+          transactions.push(transacao);
+
+            localStorage['transactions_conta']= JSON.stringify(transactions);
   }
 
   addContas(){
@@ -198,6 +215,7 @@ export class TransactionsService{
   finalizarProcessoConta(conta:Conta,val:string,recarga:number):Conta{
       var transacaoContaCartao=null;
       var transacao=null;
+      var transacaoConta:TransacaoConta=null;
       let r:boolean=false;
 
       var contas:Conta[] = this.loadAccounts();
@@ -212,6 +230,14 @@ export class TransactionsService{
                    //+= atribui o valor com o anterior
                    //=+ atribui o valor independente do valor anterior
                    if(r){
+
+                       transacaoConta = new TransacaoConta(new Date().getTime(),
+                                                         new Date().getTime().toString()+'cc',
+                                                         new Date(),
+                                                         conta,
+                                                         TipoTransacaoConta.MENSAGEM);
+
+                      
                        conta.saldo += parseFloat(recarga.toString());
                        transacao = new Transacao(new Date().getTime(),
                                            new Date().getTime().toString()+'c',
@@ -219,6 +245,8 @@ export class TransactionsService{
                                            conta);
 
                        this.addTransaction(transacao);
+                       transacaoConta.transacao=transacao;
+                       this.addTransactionConta(transacaoConta);
                     }
                           objs[index]=conta;
                 }

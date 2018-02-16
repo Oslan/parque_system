@@ -14,15 +14,17 @@ import { TipoTransacaoConta } from './TipoTransacaoConta';
 	*@param cod 
 	*@param data
 	*@param conta
-	*@param transacao
+	*@param tipoTransacaoConta
 
 	**/
-export class TransacaoContaCartao{
+
+export class TransacaoConta{
 
 	constructor(public id?:number,
 				public cod?:string,
 				public data?:Date,
 				public conta?:Conta,
-				public transacao?:Transacao,
-				public tipoTransacaoConta?:TipoTransacaoConta){}
+				public tipoTransacaoConta?:TipoTransacaoConta,
+				public transacao?:Transacao
+				){}
 }

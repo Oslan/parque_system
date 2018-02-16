@@ -12,7 +12,7 @@ import {  Router } from '@angular/router';
   styleUrls: ['./detalhado.component.css']
 })
 export class DetalhadoComponent implements OnInit {
-  detalhado="DETALAHDO";
+  detalhado;
   constructor() { }
 
   ngOnInit() {

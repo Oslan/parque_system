@@ -24,12 +24,15 @@ export class ExtratoComponent implements OnInit {
   ngOnInit() {
    	let id =+ this.route.snapshot.params['id'];
 	this.comprovante = this.transacaoRecargaService.findTransaction(id);
+
               
 
    		if(!this.comprovante){
    			  	setTimeout(()=>{
     			this.showSnackBar();
     			},200);  
+   		}else{
+   			console.log(this.comprovante);
    		}
 
 
