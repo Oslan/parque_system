@@ -1,15 +1,14 @@
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { Component, OnInit,OnChanges,SimpleChanges, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Cartao } from '../../../shared/Cartao';
-import { Client } from '../../../shared/Client';
 import { Conta } from '../../../shared/Conta';
 import { Endereco } from '../../../shared/Endereco';
 import { Transacao } from '../../../shared/Transacao';
 import { TransacaoContaCartao } from '../../../shared/TransacaoContaCartao';
-import { NgForm } from '@angular/forms';
-import {  Router } from '@angular/router';
+
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import { AppLoaderService } from '../../../services/app-loader/app-loader.service';
@@ -33,7 +32,7 @@ export class AssociacaoContaComponent implements OnInit {
  //@ViewChild('formCartao') formTarefa:NgForm;
   clientCtrl: FormControl;
   filteredClients: any;
-  clients:Client[];
+ 
   contas:Conta[];
   //Associacao
   transacaoContaCartao:TransacaoContaCartao;
@@ -59,7 +58,7 @@ export class AssociacaoContaComponent implements OnInit {
     //console.log("Constructor");
 
    //console.log(this.transactionsService.addClients());
-  // console.log(this.transactionsService.addContas());
+  //console.log(this.transactionsService.addContas());
   // this.transactionsService.emptyTransactionsContaCartao();
   //this.transactionsService.emptyTransactions();
    //console.log(this.transactionsService.loadClientsSemcontas());
