@@ -15,7 +15,7 @@ import {  Router } from '@angular/router';
 @Component({
   selector: './extrato.component',
   templateUrl: './extrato.component.html',
-  //styleUrls: ['./basic-form.component.css']
+  styleUrls: ['./extrato.component.css']
 })
 export class ExtratoFormComponent implements OnInit {
 	val;

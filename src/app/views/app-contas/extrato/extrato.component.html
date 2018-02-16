@@ -1,4 +1,3 @@
-
 <mat-card class="p-0">
     <mat-card-title class="">
         <div class="card-title-text">Cartão</div>
@@ -33,10 +32,7 @@
         <!--</form>-->
     </mat-card-content>
 
-
 </mat-card>
-
-
 
 <mat-card class="p-0" *ngIf="conta">
     <mat-card-title class="mat-bg-primary">
@@ -48,23 +44,28 @@
             <div class="pb-1">
                 <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
                     <div class=" text-center">
-                            <div class="profile-title text-center mb-1">
+                            <div class="profile-title text-center mb-1 formatacao-extrato">
                                 <div class="main-title"> <b>{{conta.client.name}}</b></div>
                                 <div class="subtitle mb-05">Nº Conta : <b>{{conta.cod}}</b></div>
                                 <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
-                                <div class="text-muted"></div>
+                                <div class="subtitle mb-05">Extrato</div>
+                                <div class="text-muted formatacao-extrato" *ngIf="transactions.length==0">
+                                    <p>Nenhuma transação efetuada ainda!</p>
+                                </div>
                                 <div class="profile-actions text-center mb-1">
-                                        <table class="table">
+                                        <table class="table formatacao-extrato">
                                             <tr *ngFor="let transacao of transactions">
-                                                <td>
-                                                    <b>{{transacao.tipoTransacaoConta}}</b> - <b>R$ {{transacao.transacao.valor}}</b> - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
-                                                     <br />
-                                                     <b>Saldo</b> : R$ {{transacao.conta.saldo}}
+                                                <td class="text-center">
+                                                    <p>
+                                                    {{transacao.tipoTransacaoConta}} - R$ {{transacao.transacao.valor}} - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
+                                                    </p>
+                                                     <p>Saldo : R$ {{transacao.conta.saldo}}</p>
+
                                                 </td>
                                             </tr>
                                         </table>
                                 </div>
-                                     <b>Saldo Atual</b> : R$ {{conta.saldo}}
+                                     <p class="formatacao-extrato"><b>Saldo Atual</b> : R$ {{conta.saldo}}</p>
                             </div>
                     </div>
                 </mat-card>
