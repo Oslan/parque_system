@@ -36,17 +36,22 @@ export const rootRouterConfig: Routes = [
         loadChildren: './views/teste/teste.module#DashboardModule', 
         data: { title: 'Teste', breadcrumb: 'TESTE'}
       },
-       { 
+      { 
         path: 'bilheteria', 
         loadChildren: './views/app-bilheteria/app-bilheteria.module#BilheteriaModule', 
         data: { title: 'Bilheteria', breadcrumb: 'BILHETERIA'}
       },
-       { 
+      { 
+        path: 'caixas', 
+        loadChildren: './views/app-caixa/app-caixa.module#CaixaModule', 
+        data: { title: 'Caixa', breadcrumb: 'CAIXA'}
+      },
+      { 
         path: 'contas', 
         loadChildren: './views/app-contas/app-contas.module#ContasModule', 
         data: { title: 'Contas', breadcrumb: 'CONTAS'}
       },
-       { 
+      { 
         path: 'cartao', 
         loadChildren: './views/app-cartao/app-cartao.module#CartaoModule', 
         data: { title: 'Cartão', breadcrumb: 'CARTÃO'}

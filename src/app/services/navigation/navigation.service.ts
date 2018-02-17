@@ -605,6 +605,18 @@ export class NavigationService {
         {name: 'TRANSAÇÕES', state: 'transacoes-conta'},
         {name: 'EXTRATO', state: 'extrato'}
       ]
+    },
+     {
+      name: 'CAIXA',
+      type: 'dropDown',
+      tooltip: 'Caixa',
+      icon: 'account_box',
+      state: 'caixas',
+       sub: [
+        {name: 'VENDAS PRODUTOS', state: 'carrinho'}
+        
+      
+      ]
     }
     
     /**,
