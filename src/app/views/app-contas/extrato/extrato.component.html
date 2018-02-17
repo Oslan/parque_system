@@ -53,13 +53,16 @@
                                     <p>Nenhuma transação efetuada ainda!</p>
                                 </div>
                                 <div class="profile-actions text-center mb-1">
-                                        <table class="table formatacao-extrato">
+                                        <table class="table table-striped formatacao-extrato">
                                             <tr *ngFor="let transacao of transactions">
                                                 <td class="text-center">
+                                                    <p>Saldo : R$ {{transacao.conta.saldo}}</p>
                                                     <p>
                                                     {{transacao.tipoTransacaoConta}} - R$ {{transacao.transacao.valor}} - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
                                                     </p>
-                                                     <p>Saldo : R$ {{transacao.conta.saldo}}</p>
+
+                                                     <p>Saldo Atualizado: R$ {{transacao.conta.saldo + transacao.transacao.valor}}</p>
+                                                     
 
                                                 </td>
                                             </tr>
