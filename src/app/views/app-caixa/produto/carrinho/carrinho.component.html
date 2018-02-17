@@ -1,1 +1,84 @@
-<b>Carrinho</b>
+<mat-card class="p-0">
+    <mat-card-title class="">
+        <div class="card-title-text">Carrinho de Compra</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+        <form>
+            <div fxLayout="row" fxLayoutWrap="wrap">
+                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                    <div class="pb-1">
+                        <mat-form-field class="full-width">
+                            <input
+                            [(ngModel)]="cod"
+                            matInput
+                            name="id"
+                            placeholder="Código do cartão (Min Length: 10, Max Length: 10)"
+                            value="">
+                        </mat-form-field>
+                        <small> </small>
+                        <small>
+                         </small>
+                    </div> 
+                </div>
+            </div>
+
+            <button 
+            mat-raised-button 
+            color="primary" 
+            (click)="openLoaderPesquisarProduto(cod)"
+            >Pesquisar</button>
+          
+        </form>
+    </mat-card-content>
+
+
+</mat-card>
+
+<mat-card class="p-0" *ngIf="!produtos.length==0">
+    <mat-card-title class="">
+        <div class="card-title-text">Meus Produtos</div>
+        <mat-divider></mat-divider>
+    </mat-card-title>
+    <mat-card-content>
+
+
+
+
+   
+<table class="table table-striped">
+  <tr>
+  	<th class="text-center cor-table-transaction-th">Cod de Barras</th>
+    <th class="text-center cor-table-transaction-th">Descricao</th>
+    <th class="text-center cor-table-transaction-th">Preço</th>
+    <th class="text-center cor-table-transaction-th">Remover</th>
+
+	
+  </tr>
+   <tr *ngFor="let produto of produtos">
+    	
+   		<td class="">
+		 {{produto.codigo}}
+   		</td>
+   		<td class="text-center cor-table-transaction-th">
+		 {{produto.descricao}}
+   		</td>
+   		<td class="text-center cor-table-transaction-th">
+		 {{produto.preco}}
+   		</td>
+   		
+   		<td class="text-center ">
+   	    <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
+		<button [routerLink]="['/']" mat-mini-fab color="warn" class="mr-1"><mat-icon>clear</mat-icon></button>
+   		</td>
+	</tr>
+
+
+
+</table>
+
+
+    </mat-card-content>
+
+
+</mat-card>

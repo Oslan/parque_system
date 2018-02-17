@@ -5,6 +5,7 @@ import { Client } from '../../shared/Client';
 import { Cartao } from '../../shared/Cartao';
 import { Conta } from '../../shared/Conta';
 import { Endereco } from '../../shared/Endereco';
+import { Produto } from '../../shared/Produto';
 import { TipoTransacaoConta } from '../../shared/TipoTransacaoConta';
 import { TransacaoContaCartao } from '../../shared/TransacaoContaCartao';
 import { TransacaoConta } from '../../shared/TransacaoConta';
@@ -15,8 +16,13 @@ export class TransactionsService{
 	constructor(private snackBar:MatSnackBar){}
 
   /**
-  * Loads
+  *Loads
   */
+  //produtos
+  loadProducts():Produto[]{
+        const produtos = localStorage['products'];
+          return produtos ? JSON.parse(produtos) : [];
+  }
 
   loadTransactionsContaCartao():TransacaoContaCartao[]{
         const transacoes = localStorage['transactions_conta_cartao'];
@@ -64,7 +70,7 @@ export class TransactionsService{
           return contas.find(conta=> conta.cartao.identificacao == cod);
   }
 
-   loadTransactionContaById(id:number):TransacaoConta[]{
+  loadTransactionContaById(id:number):TransacaoConta[]{
         var trans = this.loadTransactionsConta();
           return trans.filter(transacao => transacao.conta.id===id);
   }
@@ -73,9 +79,23 @@ export class TransactionsService{
         var trans = this.loadTransactions();
           return trans.find(transacao => transacao.id===id);
   }
+
   /**
-  * ADDS
+  *FINDS
   */
+  //produtos
+  findProdutosByCod(cod):Produto{
+      let produtos = this.loadProducts();
+         return produtos.find(produto=> produto.codigo === cod);
+  }
+
+  /**
+  *ADDS
+  */
+  addCarrinho(produtos:Produto[],produto:Produto):Produto[]{
+    produtos.push(produto);
+    return produtos;
+    }
 
   addTransaction(transacao:Transacao):void{
         const transactions=this.loadTransactions();
@@ -96,6 +116,37 @@ export class TransactionsService{
           transactions.push(transacao);
 
             localStorage['transactions_conta']= JSON.stringify(transactions);
+  }
+
+  addProducts(){
+    let produtos:Produto[]=[];
+
+        produtos.push(new Produto(1,
+                                 (new Date().getTime().toString())+Math.random()*(1 - 1000) + 1,
+                                  'Água Mineral',
+                                  2,));
+
+        produtos.push(new Produto(2,
+                                 (new Date().getTime().toString())+Math.random()*(1 - 1000) + 1,
+                                  'Refrigerante  Fanta Laranja Lt - 250 ml ',
+                                  3,));
+
+        produtos.push(new Produto(3,
+                                 (new Date().getTime().toString())+Math.random()*(1 - 1000) + 1,
+                                  'Batata Frita Rufles pct ',
+                                  5,));
+
+        produtos.push(new Produto(4,
+                                 (new Date().getTime().toString())+Math.random()*(1 - 1000) + 1,
+                                  'Caixa Chocolate - Garoto',
+                                  10,));
+
+        produtos.push(new Produto(5,
+                                 (new Date().getTime().toString())+Math.random()*(1 - 1000) + 1,
+                                  'Amedoin Chines cx ',
+                                  2,));
+
+    localStorage['products'] = JSON.stringify(produtos);
   }
 
   addContas(){
