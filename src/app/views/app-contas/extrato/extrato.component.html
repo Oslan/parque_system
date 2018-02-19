@@ -56,14 +56,9 @@
                                         <table class="table table-striped formatacao-extrato">
                                             <tr *ngFor="let transacao of transactions">
                                                 <td class="text-center">
-                                                    <p>Saldo : R$ {{transacao.conta.saldo}}</p>
                                                     <p>
-                                                    {{transacao.tipoTransacaoConta}} - R$ {{transacao.transacao.valor}} - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
+                                                        {{transacao.tipoTransacaoConta}} - R$ {{transacao.transacao.valor}} - {{transacao.transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
                                                     </p>
-
-                                                     <p>Saldo Atualizado: R$ {{transacao.conta.saldo + transacao.transacao.valor}}</p>
-                                                     
-
                                                 </td>
                                             </tr>
                                         </table>
@@ -75,7 +70,6 @@
             </div>
          </mat-card-content>
 </mat-card>
-
 
 <!--
             <button 

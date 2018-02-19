@@ -45,7 +45,7 @@ export class ExtratoFormComponent implements OnInit {
   			this.showSnackBar();
   		}else{
   		this.transactions = this.transactionsService.loadTransactionContaById(this.conta.id);
-     
+        console.log(this.transactions);
     	}
     }
 

@@ -60,6 +60,7 @@ export class AssociacaoContaComponent implements OnInit {
    //console.log(this.transactionsService.addClients());
   //console.log(this.transactionsService.addContas());
   //console.log(this.transactionsService.addProducts());
+  //  console.log(this.transactionsService.addDependente());
   // this.transactionsService.emptyTransactionsContaCartao();
   //this.transactionsService.emptyTransactions();
    //console.log(this.transactionsService.loadClientsSemcontas());
@@ -114,7 +115,8 @@ export class AssociacaoContaComponent implements OnInit {
       let conta:Conta = this.clientCtrl.value;
       conta.cartao=cartao;
      
-      this.transacaoContaCartao = this.transactionsService.finalizarProcessoConta(conta,identificacao,this.valor);
+
+      this.transacaoContaCartao = this.transactionsService.finalizarProcessoConta(conta,this.valor);
       this.openSnackBar("Cartão Adcionado!","Fechar");
      
       this.router.navigate(['/contas/transacoes/associacao/detalhe-associacao/'+

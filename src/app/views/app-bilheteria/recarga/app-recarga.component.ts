@@ -1,8 +1,9 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Conta } from '../../../shared/Conta';
+import { Dependente } from '../../../shared/Dependente';
 import { Transacao } from '../../../shared/Transacao';
 import { AppLoaderService } from '../../../services/app-loader/app-loader.service';
 import { TransactionsService } from '../../../services/transactions/transactions.service';
@@ -20,25 +21,37 @@ export class RecargaFormComponent implements OnInit {
  console = console;
  basicForm: FormGroup;
  selectedOption;
+ dependentes:Dependente[];
+
+ c=[
+    {name:'Artur Oliveira',url:'crianca01.jpg'},
+    {name:'Alan Marques',url:'crianca02.jpg'},
+    {name:'João Macedo',url:'crianca03.jpg'},
+    {name:'Gabriel do Nascimento',url:'crianca04.jpg'}
+    ];
 
  @ViewChild('formCartao') formTarefa:NgForm;
  val;
  conta:Conta;
  transacao:Transacao;
  valor:number;
+ activeView : string = 'overview';
 
 
   constructor(
               private transactionsService:TransactionsService,
               private transacaoRecargaService:TransacaoRecargaService ,
               private router:Router,
+              //private route:ActivatedRoute,
               private loader:AppLoaderService,
               public confirmService: AppConfirmService) { 
 
  
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.activeView = this.route.snapshot.params['view']
+  }
 
   openLoaderPesquisarCartao(id:string) {
     this.loader.open("Pesquisando Cartão...");
@@ -67,9 +80,13 @@ export class RecargaFormComponent implements OnInit {
 
   pesquisarCartao(id:string):void{
       this.conta= this.transactionsService.loadAccountsByCod(id);
+
       if(!this.conta){
           this.showSnackBar();
-     }   
+     } else{
+       this.dependentes = this.transactionsService.loadDependentesByIdClient(this.conta.client.id);
+      
+     }  
   }
 
   carregarCartao(val:string):void{

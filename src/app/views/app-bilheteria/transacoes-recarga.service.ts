@@ -64,7 +64,7 @@ export class TransacaoRecargaService{
 
 
 
-              contas[index].saldo += parseFloat(val);
+              contas[index].saldo += parseFloat(val.toString());
               }
             //  objs[index]=cartao;
  
@@ -76,7 +76,7 @@ export class TransacaoRecargaService{
        //contas = this.loadAccounts();
        contaTemp= this.loadAccountsById(conta.cod);
        console.log("CONTA " + contaTemp.id);
-       let  recarga = new Transacao(new Date().getTime(),new Date().getTime().toString()+'c',new Date(),parseFloat(val),contaTemp);
+       let  recarga = new Transacao(new Date().getTime(),new Date().getTime().toString()+'c',new Date(),parseFloat(val.toString()),contaTemp);
        this.addTransaction(recarga);
        transacaoConta.transacao=recarga;
        this.transactionsService.addTransactionConta(transacaoConta);

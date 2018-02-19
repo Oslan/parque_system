@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Transacao } from '../../shared/Transacao';
 import { Client } from '../../shared/Client';
+import { Dependente } from '../../shared/Dependente';
 import { Cartao } from '../../shared/Cartao';
 import { Conta } from '../../shared/Conta';
 import { Endereco } from '../../shared/Endereco';
@@ -22,6 +23,16 @@ export class TransactionsService{
   loadProducts():Produto[]{
         const produtos = localStorage['products'];
           return produtos ? JSON.parse(produtos) : [];
+  }
+
+  loadDependentes():Dependente[]{
+        const dependentes = localStorage['dependentes'];
+          return dependentes ? JSON.parse(dependentes) : [];
+  }
+
+  loadDependentesByIdClient(id:number):Dependente[]{
+       const dependentes = this.loadDependentes();
+          return dependentes.filter(dependente=> dependente.client.id===id);
   }
 
   loadTransactionsContaCartao():TransacaoContaCartao[]{
@@ -149,6 +160,71 @@ export class TransactionsService{
     localStorage['products'] = JSON.stringify(produtos);
   }
 
+
+
+  addDependente(){
+     let dependentes:Dependente[]=[]; 
+
+     dependentes.push(new Dependente(1,
+                                     new Date().getTime().toString(),
+                                     'Joao Albuquerque',
+                                     'crianca01.jpg',
+                                     new Client(1,
+                                                'Oslan Caio Souza Aguiar',
+                                                'caio.aguiar2528@gmail.com',
+                                                'face-1.jpg',
+                                                 true,
+                                                 false,
+                                                 new Endereco(1,
+                                                              "Nova Cidade",
+                                                              "Salonika",
+                                                              "363"))));
+     dependentes.push(new Dependente(2,
+                                     new Date().getTime().toString(),
+                                     'Marcos Vinicius',
+                                     'crianca02.jpg',
+                                     new Client(1,
+                                                'Oslan Caio Souza Aguiar',
+                                                'caio.aguiar2528@gmail.com',
+                                                'face-1.jpg',
+                                                 true,
+                                                 false,
+                                                 new Endereco(1,
+                                                              "Nova Cidade",
+                                                              "Salonika",
+                                                              "363"))));
+     dependentes.push(new Dependente(3,
+                                     new Date().getTime().toString(),
+                                     'Daniel Santos',
+                                     'crianca03.jpg',
+                                     new Client(1,
+                                                'Oslan Caio Souza Aguiar',
+                                                'caio.aguiar2528@gmail.com',
+                                                'face-1.jpg',
+                                                 true,
+                                                 false,
+                                                 new Endereco(1,
+                                                              "Nova Cidade",
+                                                              "Salonika",
+                                                              "363"))));
+     dependentes.push(new Dependente(4,
+                                     new Date().getTime().toString(),
+                                     'Carlos Nogueira',
+                                     'crianca04.jpg',
+                                     new Client(1,
+                                                'Oslan Caio Souza Aguiar',
+                                                'caio.aguiar2528@gmail.com',
+                                                'face-1.jpg',
+                                                 true,
+                                                 false,
+                                                 new Endereco(1,
+                                                              "Nova Cidade",
+                                                              "Salonika",
+                                                              "363"))));
+
+     localStorage['dependentes'] = JSON.stringify(dependentes);
+  }
+
   addContas(){
 
 		let contas:Conta[]=[];
@@ -263,16 +339,18 @@ export class TransactionsService{
       localStorage['accounts'] = JSON.stringify(contas);
   }
 
-  finalizarProcessoConta(conta:Conta,val:string,recarga:number):Conta{
+  finalizarProcessoConta(conta:Conta,recarga:number):Conta{
       var transacaoContaCartao=null;
       var transacao=null;
       var transacaoConta:TransacaoConta=null;
       let r:boolean=false;
 
+     let re = parseFloat(recarga.toString());
+
       var contas:Conta[] = this.loadAccounts();
 
         //se houve valor de recarga => sentinela setada
-        if(recarga  != null && recarga!=0){
+        if(re  != null && re!=0){
             r=true;
         }
         //verifica qual foi a conta , e faz a alteracao do valor saldo e cria uma nova transacao
@@ -292,7 +370,7 @@ export class TransactionsService{
                        conta.saldo += parseFloat(recarga.toString());
                        transacao = new Transacao(new Date().getTime(),
                                            new Date().getTime().toString()+'c',
-                                           new Date(),recarga,
+                                           new Date(),re,
                                            conta);
 
                        this.addTransaction(transacao);
