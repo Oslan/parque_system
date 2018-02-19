@@ -4,19 +4,21 @@
   <mat-sidenav #sidenav [opened]="!isNavOver()" [mode]="isNavOver() ? 'over' : 'side'" class="sidebar-panel">
     <div id="scroll-area" class="navigation-hold" fxLayout="column">
       <!-- App Logo -->
-      <div class="branding default-bg">
-          <img src="assets/images/logo.png" alt="" class="app-logo">
+      <div class="branding ">
+          <img src="assets/images/logo_logo.png" width="70" height="70" alt="" class="">
+          <p style="font-family: cursive; font-size: 20px; margin-top: 7px;">System</p>
           <!-- Two different logos for dark and light themes -->
-          <img 
+          <!--<img 
           src="assets/images/logo-text-white.png" 
           alt="" 
           class="app-logo-text"
-          *ngIf="themeService.activatedThemeName.indexOf('dark') !== -1">
-          <img 
+          *ngIf="themeService.activatedThemeName.indexOf('dark') !== -1">-->
+          <!--<img 
           src="assets/images/logo-text.png" 
           alt="" 
           class="app-logo-text"
-          *ngIf="themeService.activatedThemeName.indexOf('dark') === -1">
+          *ngIf="themeService.activatedThemeName.indexOf('dark') === -1">-->
+
       </div>
 
       <!-- Sidebar user -->
