@@ -1,19 +1,19 @@
 <mat-card class="p-0">
-    <mat-card-title class="">
+    <mat-card-title class="mat-bg-primary">
         <div class="card-title-text">Rercarga Cartão</div>
         <mat-divider></mat-divider>
     </mat-card-title>
     <mat-card-content>
         <form  #formCartao="ngForm">
             <div fxLayout="row" fxLayoutWrap="wrap">
-                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
                     <div class="pb-1">
                         <mat-form-field class="full-width">
-                            <input
+                            <input style="color:#576574; font-size: 18px;" 
                             [(ngModel)]="val"
                             matInput
                             name="id"
-                            placeholder="Código do cartão (Min Length: 10, Max Length: 10)"
+                            placeholder="Código do cartão "
                             value="">
                         </mat-form-field>
                         <small> </small>
@@ -25,9 +25,10 @@
 
             <button 
             mat-raised-button 
-            color="primary" 
+            style="
+             color:#576574;" 
             (click)="openLoaderPesquisarCartao(val)"
-            >Pesquisar</button>
+            >Pesquisar <mat-icon>search</mat-icon></button>
           
         </form>
     </mat-card-content>
@@ -38,7 +39,7 @@
 
 <mat-card class="p-0" *ngIf="conta">
     <mat-card-title class="mat-bg-primary">
-             <div class="card-title-text">Dados
+             <div class="card-title-text"> Dados do Cliente
              </div>
     </mat-card-title>
      
@@ -152,11 +153,11 @@
                              <div class="pb-1">
                                  <mat-form-field class="full-width">
                                     <input
-                                    [(ngModel)]="conta.saldo"
+                                   
                                     matInput
                                     name="id"
                                      placeholder="Saldo"
-                                     value="">
+                                     value="R$ {{conta.saldo}}">
                                   </mat-form-field>
                                     <small> </small>
                                     <small></small>
