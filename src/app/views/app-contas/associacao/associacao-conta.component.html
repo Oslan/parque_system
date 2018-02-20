@@ -6,12 +6,13 @@
 
 
   <mat-card-content>
+
       <mat-form-field class="full-width">
-        <input matInput placeholder="Pesquisar Conta " [matAutocomplete]="auto"
+        <input matInput placeholder=" Pesquisar Conta "  [matAutocomplete]="auto"
         [formControl]="clientCtrl" value="{{clientCtrl.value?.client?.name}}">
       </mat-form-field>
 
-      <mat-autocomplete #auto="matAutocomplete">
+      <mat-autocomplete  #auto="matAutocomplete" >
         <mat-option *ngFor="let conta of filteredClients | async" [value]="conta" style="height: 90px; color: #3A539B;">
 
       	 <p style="margin: 0px;"><strong>Nome:: </strong> {{ conta.client.name }}</p>
@@ -60,6 +61,43 @@
                             </mat-card>
 					              </div>
   	              </div>
+
+                  <!-- VIEW DOS DEPENDENTES -->
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+
+                                        <div fxLayout="column" fxFlex="100" fxFlex.gt-md="150">
+                                            <mat-card class="default">
+                                                 <mat-card-title  class="mat-bg-primary">  
+                                                    <div class="card-title-text">Dependentes
+                                                    </div>
+                                                    
+                                                  </mat-card-title>
+                                                  <p style="margin-left: 5px;" *ngIf="dependentes.length==0">
+                                                        Nao existem dependentes!
+                                                    </p>
+                                                 <mat-card-content class="p-1" *ngIf="!dependentes.length==0">
+                                                    <mat-list class="compact-list mb-1">
+                                                         <mat-list-item class="" *ngFor=" let dependente of dependentes">
+                                                            <img mat-list-avatar class="mr-1" src="assets/images/{{dependente.url}}" alt="" width="90" height="90" >
+
+                                                              <div fxLayout="row" fxFlex="100">
+                                                              <h6 class="m-0 mr-1">{{dependente.nome}}</h6>
+                                                              <span fxFlex></span>
+                                                             
+                                                              <span fxFlex></span>
+                                                              <small class="text-muted mr-1">trt</small>
+                                                            </div>
+
+                                                         </mat-list-item>
+                                                    </mat-list>
+        <div class="text-center">
+          <button mat-button class="full-width">Ver Todos</button>
+        </div>
+                                                </mat-card-content>
+                                             </mat-card>
+                                        </div>
+                                    </div>
+                                    <!--FIM  VIEW DOS DEPENDENTES -->
               </div>
             
 

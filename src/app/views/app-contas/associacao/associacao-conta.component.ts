@@ -7,6 +7,7 @@ import { Cartao } from '../../../shared/Cartao';
 import { Conta } from '../../../shared/Conta';
 import { Endereco } from '../../../shared/Endereco';
 import { Transacao } from '../../../shared/Transacao';
+import { Dependente } from '../../../shared/Dependente';
 import { TransacaoContaCartao } from '../../../shared/TransacaoContaCartao';
 
 import 'rxjs/add/operator/startWith';
@@ -32,6 +33,7 @@ export class AssociacaoContaComponent implements OnInit {
  //@ViewChild('formCartao') formTarefa:NgForm;
   clientCtrl: FormControl;
   filteredClients: any;
+  dependentes:Dependente[];
  
   contas:Conta[];
   //Associacao
@@ -39,7 +41,9 @@ export class AssociacaoContaComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   selectedOption;
+  conta:Conta=null;
 
+   
   valor:number=null;
 
  /**
@@ -77,6 +81,7 @@ export class AssociacaoContaComponent implements OnInit {
       .startWith(null)
       .map(object => this.filterClients(object));
 
+
     this.firstFormGroup = this.fb.group({
       firstCtrl: ['', Validators.required]
     });
@@ -84,11 +89,24 @@ export class AssociacaoContaComponent implements OnInit {
      secondCtrl: ['', Validators.nullValidator]
     });
 
+   
+   
+
   }
 
    filterClients(val:Conta) {
-     return val ? 
-     this.contas.filter(s => new RegExp(`^${val}`, 'gi').test(s.client.name)):this.contas;
+
+   
+    console.log( typeof this.clientCtrl.value) ;
+      
+    if(typeof this.clientCtrl.value  == 'object' && this.clientCtrl.value!=null){
+              this.conta = this.clientCtrl.value;
+              this.dependentes = this.transactionsService.loadDependentesByIdClient(this.conta.id);
+     }
+
+      console.log( this.transactionsService.loadAccountsByNameClient(this.clientCtrl.value));
+     return  this.transactionsService.loadAccountsByNameClient(this.clientCtrl.value);
+
   }
 
    openLoaderAssociarContaCartao() {

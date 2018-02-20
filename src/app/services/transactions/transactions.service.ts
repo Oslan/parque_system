@@ -25,6 +25,11 @@ export class TransactionsService{
           return produtos ? JSON.parse(produtos) : [];
   }
 
+   loadAccountsByNameClient(name:string):Conta[]{
+        const contas = this.loadAccounts();
+          return contas.filter(conta=> conta.client.name.startsWith(name));
+  }
+
   loadDependentes():Dependente[]{
         const dependentes = localStorage['dependentes'];
           return dependentes ? JSON.parse(dependentes) : [];

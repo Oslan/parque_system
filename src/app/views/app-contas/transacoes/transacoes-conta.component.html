@@ -1,8 +1,9 @@
-<div class="mat-box-shadow margin-333">
+
+<mat-card>
 <table class="table table-striped">
   <tr>
     <th class="text-center cor-table-transaction-th">Cod Transação</th>
-    <th class="texte-center cor-table-transaction-th">Data/Hora</th>
+    <th class="cor-table-transaction-th">Data/Hora</th>
     <th class="cor-table-transaction-th">Detalhe</th>
     
   </tr>
@@ -16,12 +17,12 @@
       <td class="corData">
      {{transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
       </td>
-      <td class="text-center ">
+      <td >
         <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
       
-    <button [routerLink]="['/contas/transacoes/associacao/detalhe-associacao',transacao.id]" mat-mini-fab color="primary" class="mr-1"><mat-icon>visibility</mat-icon></button>
+    <button [routerLink]="['/contas/transacoes/associacao/detalhe-associacao',transacao.id]" mat-mini-fab  class="mr-1 icon-trans"><mat-icon>keyboard_arrow_right </mat-icon></button>
       </td>
   </tr>
 
 </table>
-</div>
+</mat-card>

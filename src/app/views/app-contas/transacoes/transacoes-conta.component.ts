@@ -11,7 +11,8 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'transacoes-conta',
-  templateUrl: './transacoes-conta.component.html'
+  templateUrl: './transacoes-conta.component.html',
+   styleUrls: ['./transacoes-conta.component.css']
 })
 export class TransacoesContaComponent implements OnInit {
   transacoes:TransacaoContaCartao[];
