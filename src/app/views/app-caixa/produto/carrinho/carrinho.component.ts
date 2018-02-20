@@ -20,6 +20,7 @@ export class CarrinhoComponent implements OnInit {
  
  produtos:Produto[]=[];
  produto:Produto;
+ total:number=0.0;
 
   constructor(private transactionsService:TransactionsService,
   			  private loader:AppLoaderService) {
@@ -47,6 +48,11 @@ openLoaderPesquisarProduto(codigo:string) {
       	this.transactionsService.openSnackBar("Produto não cadastrado","Fechar");
   	}	 else{
       this.produtos=this.transactionsService.addCarrinho(this.produtos,this.produto);
+   this.total=0.0;
+      this.produtos.forEach((obj,index,objs)=>{
+       
+         this.total+=obj.preco;
+      });
       console.log("Cart" +this.produtos);
     }
 

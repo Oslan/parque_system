@@ -4,32 +4,81 @@
         <mat-divider></mat-divider>
     </mat-card-title>
     <mat-card-content>
-        <form>
-            <div fxLayout="row" fxLayoutWrap="wrap">
-                <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
-                    <div class="pb-1">
-                        <mat-form-field class="full-width">
-                            <input
-                            [(ngModel)]="cod"
-                            matInput
-                            name="id"
-                            placeholder="Código do cartão (Min Length: 10, Max Length: 10)"
-                            value="">
-                        </mat-form-field>
-                        <small> </small>
-                        <small>
-                         </small>
-                    </div> 
-                </div>
+            <div class="pb-1">
+                 <div fxLayout="row" fxLayoutWrap="wrap">
+                      <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                          <form>
+                              <div fxLayout="row" fxLayoutWrap="wrap">
+                                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                      <div class="pb-1">
+                                          <mat-form-field class="full-width">
+                                              <input
+                                              [(ngModel)]="cod"
+                                              matInput
+                                              name="id"
+                                              placeholder="Código do Produto "
+                                              value="">
+                                          </mat-form-field>
+                                          <small> </small>
+                                          <small>
+                                           </small>
+                                      </div> 
+                                  </div>
+                              </div>
+
+                              <button 
+                              mat-raised-button 
+                              color="primary" 
+                              (click)="openLoaderPesquisarProduto(cod)"
+                              >Pesquisar Produto</button>
+                            
+                          </form>
+                      </div>
+
+                       <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 " *ngIf="!produtos.length==0">
+                        <form>
+                              <div fxLayout="row" fxLayoutWrap="wrap">
+                                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                      <div class="pb-1">
+                                          <mat-form-field class="full-width">
+                                              <input
+                                              
+                                              matInput
+                                              name="id"
+                                              placeholder="Código do cartão "
+                                              value="">
+                                          </mat-form-field>
+                                          <small> </small>
+                                          <small>
+                                           </small>
+                                      </div> 
+                                  </div>
+                              </div>
+
+                              <button 
+                              mat-raised-button 
+                              color="accent" 
+                              (click)="openLoaderPesquisarProduto(cod)"
+                              >Pesquisar Cartão</button>
+                            
+                          </form>
+
+                   
+                        
+                       </div>
+
+                  </div>
             </div>
 
-            <button 
-            mat-raised-button 
-            color="primary" 
-            (click)="openLoaderPesquisarProduto(cod)"
-            >Pesquisar</button>
-          
-        </form>
+
+
+
+
+
+
+
+
+
     </mat-card-content>
 
 
@@ -37,7 +86,15 @@
 
 <mat-card class="p-0" *ngIf="!produtos.length==0">
     <mat-card-title class="">
-        <div class="card-title-text">Meus Produtos</div>
+        <div class="card-title-text">Meus Produtos
+
+<mat-card-content>
+                          <P  style="float: right; margin-top: 30px; font-family: monospace; font-size: 20px;">Total: R$ {{total}}</P>
+                        </mat-card-content>
+        </div>
+
+     
+
         <mat-divider></mat-divider>
     </mat-card-title>
     <mat-card-content>
