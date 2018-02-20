@@ -1,5 +1,4 @@
-
-<div class="mat-box-shadow margin-333">
+<mat-card class="p-0">
 <table class="table table-striped">
   <tr>
   	<th class="text-center cor-table-transaction-th">Cod Transação</th>
@@ -26,11 +25,12 @@
    		</td>
    		<td class="text-center ">
    	    <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
-		<button [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.id]" mat-mini-fab color="primary" class="mr-1"><mat-icon>visibility</mat-icon></button>
+		<button [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.id]" mat-mini-fab style="color:#fff; background-color: #34ace0;"  class="mr-1 "><mat-icon>keyboard_arrow_right</mat-icon></button>
    		</td>
 	</tr>
 
 
 
 </table>
-</div>
+
+</mat-card>

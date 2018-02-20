@@ -108,9 +108,15 @@
 
    <mat-card-content >
      <div class="margin-333">    
-       
-   <button *ngIf="comprovante" mat-raised-button color="accent" class="mt-5">Imprimir</button> 
-   <button [routerLink]="['/bilheteria/recarga']" mat-raised-button color="primary" class="mt-5">Nova Recarga</button> 
-   <button [routerLink]="['/bilheteria/transacoes']" mat-raised-button color="accent" class="mt-5">Transações</button> 
-    </div>
+             
+         <button *ngIf="comprovante" 
+         mat-raised-button class="mt-5 trans">Imprimir <mat-icon>print</mat-icon>
+         </button> 
+         <button [routerLink]="['/bilheteria/recarga']" 
+         mat-raised-button  class="mt-5 btn-trans">Nova Recarga <mat-icon>add_to_queue</mat-icon>
+         </button> 
+         <button [routerLink]="['/bilheteria/transacoes']"
+          mat-raised-button  class="mt-5 trans">Transações <mat-icon>format_list_bulleted</mat-icon>
+        </button> 
+      </div>
  </mat-card-content>

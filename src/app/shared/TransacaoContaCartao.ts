@@ -1,6 +1,6 @@
 import { Conta } from './Conta';
 import { Transacao } from './Transacao';
-import { TipoTransacaoConta } from './TipoTransacaoConta';
+
 
 /**
 *@author Caio
@@ -23,6 +23,6 @@ export class TransacaoContaCartao{
 				public cod?:string,
 				public data?:Date,
 				public conta?:Conta,
-				public transacao?:Transacao,
-				public tipoTransacaoConta?:TipoTransacaoConta){}
+				public transacao?:Transacao
+				){}
 }

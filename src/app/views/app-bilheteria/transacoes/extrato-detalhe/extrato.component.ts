@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'extrato',
   templateUrl: './extrato.component.html',
+  styleUrls: ['./extrato.component.css']
 
 })
 export class ExtratoComponent implements OnInit {
