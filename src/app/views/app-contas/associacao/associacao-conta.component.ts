@@ -95,8 +95,6 @@ export class AssociacaoContaComponent implements OnInit {
   }
 
    filterClients(val:Conta) {
-
-   
     console.log( typeof this.clientCtrl.value) ;
       
     if(typeof this.clientCtrl.value  == 'object' && this.clientCtrl.value!=null){

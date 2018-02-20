@@ -350,12 +350,13 @@ export class TransactionsService{
       var transacaoConta:TransacaoConta=null;
       let r:boolean=false;
 
-     let re = parseFloat(recarga.toString());
-
+   
+       let re=null;
       var contas:Conta[] = this.loadAccounts();
 
         //se houve valor de recarga => sentinela setada
-        if(re  != null && re!=0){
+        if(recarga  != null && recarga!=0){
+           re = parseFloat(recarga.toString());
             r=true;
         }
         //verifica qual foi a conta , e faz a alteracao do valor saldo e cria uma nova transacao

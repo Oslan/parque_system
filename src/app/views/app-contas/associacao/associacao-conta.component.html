@@ -183,10 +183,10 @@
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Número do Cartão</ng-template>
           <mat-form-field class="pt-1 pb-1">
-            <input matInput placeholder="Nº Cartão"  formControlName="firstCtrl" required>
+            <input matInput placeholder="Nº Cartão" class="font-asso"  formControlName="firstCtrl" required>
           </mat-form-field>
           <div>
-            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+            <button mat-raised-button class="cartao-btn-asso " matStepperNext>Próximo <mat-icon>keyboard_arrow_right</mat-icon></button>
           </div>
         </form>
       </mat-step>
@@ -194,17 +194,17 @@
         <form>
           <ng-template matStepLabel>Nome do Cliente</ng-template>
           <mat-form-field class="pt-1 pb-1">
-            <input
+            <input style="font-family: monospace; font-size: 14px; color: #1e272e;" 
 
-                            name="valor"
+                            name=""
                             matInput
                             disabled
                             value="{{clientCtrl.value?.client?.name}}">
 
           </mat-form-field>
           <div>
-            <button mat-raised-button color="accent" matStepperPrevious>Voltar</button>
-            <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+            <button mat-raised-button class="cartao-btn-asso" matStepperPrevious><mat-icon>keyboard_arrow_left </mat-icon>Voltar</button>
+            <button mat-raised-button class="cartao-btn-asso" matStepperNext>Próximo <mat-icon>keyboard_arrow_right</mat-icon></button>
           </div>
         </form>
       </mat-step>
