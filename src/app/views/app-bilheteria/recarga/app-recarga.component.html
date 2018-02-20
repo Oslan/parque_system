@@ -9,7 +9,7 @@
                 <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
                     <div class="pb-1">
                         <mat-form-field class="full-width">
-                            <input style="color:#576574; font-size: 18px; font-family: monospace;" 
+                            <input class="cartao-style" 
                             [(ngModel)]="val"
                             matInput
                             name="id"
@@ -25,8 +25,7 @@
 
             <button 
             mat-raised-button 
-            style="
-             color:#576574;" 
+            class="cartao-btn-style"
             (click)="openLoaderPesquisarCartao(val)"
             >Pesquisar <mat-icon>search</mat-icon></button>
           
@@ -39,7 +38,7 @@
 
 <mat-card class="p-0" *ngIf="conta">
     <mat-card-title class="mat-bg-primary">
-             <div class="card-title-text"> Dados do Cliente
+             <div class="card-title-text"><p><mat-icon>assignment_ind</mat-icon> Dados do Cliente</p>
              </div>
     </mat-card-title>
      
@@ -62,9 +61,7 @@
             </div>
              <div *ngIf="!conta.cartao">
                 <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
-            </div>
-          
-            
+            </div>        
           </div>
       </div>
                                             </div>
@@ -106,7 +103,6 @@
                                              </mat-card>
                                         </div>
                                     </div>
-
                                     <!--FIM  VIEW DOS DEPENDENTES -->
                                 </div>
                                     </div>
@@ -145,15 +141,11 @@
 
                         </div>
                      
-     
-
-               
                        <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1" >
                              <div class="card-title-text">Saldo do Cartão</div>
                              <div class="pb-1">
                                  <mat-form-field class="full-width">
                                     <input
-                                   
                                     matInput
                                     name="id"
                                      placeholder="Saldo"
@@ -201,10 +193,10 @@
 
             <button 
             mat-raised-button 
-            color="primary" 
+            class="cartao-btn-style" 
              (click)="openLoaderCarregarCartao(valor)"
            
-            >Carregar Cartão</button>
+            >Carregar Cartão <mat-icon>add_box</mat-icon></button>
           
         </form>
 

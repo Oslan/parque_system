@@ -1,0 +1,12 @@
+.cartao-style{
+color:#576574; font-size: 18px; font-family: monospace;
+}
+.cartao-btn-style{
+color:#576574;
+}
+
+.cartao-btn-style:hover{
+	color:#fff;
+	background-color: #3f51b5;
+}
+

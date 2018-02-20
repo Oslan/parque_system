@@ -14,7 +14,7 @@ import { TransacaoRecargaService } from '../transacoes-recarga.service';
 @Component({
   selector: 'app-recarga-form',
   templateUrl: './app-recarga.component.html',
-  //styleUrls: ['./basic-form.component.css']
+  styleUrls: ['./app-recarga.component.css']
 })
 export class RecargaFormComponent implements OnInit {
  formData = {}
@@ -46,7 +46,6 @@ export class RecargaFormComponent implements OnInit {
               private loader:AppLoaderService,
               public confirmService: AppConfirmService) { 
 
- 
   }
 
   ngOnInit() {
@@ -85,7 +84,7 @@ export class RecargaFormComponent implements OnInit {
           this.showSnackBar();
      } else{
        this.dependentes = this.transactionsService.loadDependentesByIdClient(this.conta.client.id);
-      
+
      }  
   }
 
@@ -95,8 +94,8 @@ export class RecargaFormComponent implements OnInit {
      console.log(this.transacao.id);
   }
 
-   showSnackBar(){
+  showSnackBar(){
      this.transactionsService.openSnackBar("Nenhum cartão encontrado!","Fechar");
-   }
+  }
  
 }
