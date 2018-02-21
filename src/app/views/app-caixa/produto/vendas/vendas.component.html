@@ -9,7 +9,7 @@
   </tr>
    <tr *ngFor="let transacao of transacoes">
     	<td class="text-center corTransacao" >
-    	<a class="link-transaction" [routerLink]="['/bilheteria/transacoes/extrato-detalhe',transacao.id]" href="#">
+    	<a class="link-transaction" [routerLink]="['/caixas/itens-venda/detalhe/',transacao.id]" href="#">
 		 {{transacao.id}}
 		</a>
    		</td>

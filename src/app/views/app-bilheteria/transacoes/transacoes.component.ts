@@ -30,10 +30,4 @@ export class TransacoesComponent implements OnInit {
         },200);
      }
   }
-
- 
-
-
-  
-
 }

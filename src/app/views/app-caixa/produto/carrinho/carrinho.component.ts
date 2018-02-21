@@ -90,7 +90,7 @@ openLoaderPesquisarProduto(codigo:string) {
 
   processarVenda(){
     console.log("Processo Venda");
-    if((this.conta.saldo - this.total) >= this.conta.saldo){
+    if((this.conta.saldo - this.total) <= this.conta.saldo){
        this.transactionsService.finalizarVenda(this.conta,this.total,this.produtos);
     }
     else{

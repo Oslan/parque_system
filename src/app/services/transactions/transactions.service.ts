@@ -104,7 +104,12 @@ export class TransactionsService{
           return transacoes ? JSON.parse(transacoes) : [];
   }
 
-   loadTransactionVenda():Venda[]{
+  loadTransactionItensVendaByIdVenda(id):ItensVenda[]{
+        const transacoes = this.loadTransactionItensVenda();
+           return transacoes.filter(transacao=> transacao.venda.id === id);
+  }
+
+  loadTransactionVenda():Venda[]{
         const transacoes = localStorage['transactions_venda'];
           return transacoes ? JSON.parse(transacoes) : [];
   }

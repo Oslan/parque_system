@@ -1,0 +1,81 @@
+
+
+<mat-card class="p-0">
+    <mat-card-title class="mat-bg-primary">
+             <div class="card-title-text"><p><mat-icon>assignment_ind</mat-icon> Dados da Venda</p>
+             </div>
+    </mat-card-title>
+     
+        <mat-card-content  >
+              <div class="pb-1">
+                 <div fxLayout="row" fxLayoutWrap="wrap">
+                      <div fxFlex="100" fxFlex.gt-xs="150" class="pr-1 ">
+                                        <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+
+                                            <div class=" propic text-center">
+                                                
+                                   <div class="profile-title text-center mb-1">
+        <div class="main-title"> <b>{{conta.client.name}}</b></div>
+        <div class="subtitle mb-05">Nº Venda : <b>{{venda.codigo}}</b></div>
+        <div class="subtitle mb-05">Nº Conta : <b>{{conta.cod}}</b></div>
+        <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
+        <div class="subtitle mb-05">Data Venda : <b>{{venda.data | date:'dd/MM/yy - hh:mm:ss a'}}</b></div>
+         <div class="subtitle mb-05">Valor Total : <b>{{venda.id}}</b></div>
+        <div class="text-muted"></div>
+      
+      </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+              </div>
+            </div>
+
+            <table class="table table-striped" style="font-family: monospace;">
+  <tr>
+    <th class=" cor-table-transaction-th">Código de Barra</th>
+    <th class="text-center cor-table-transaction-th">Descrição</th>
+  
+    <th class="text-center cor-table-transaction-th">Valor Un</th>
+
+  
+  </tr>
+   <tr *ngFor="let item of itensVenda">
+      
+      <td class="">
+     {{item.produto.codigo}}
+      </td>
+      <td class="text-center cor-table-transaction-th">
+     {{item.produto.descricao}}
+      </td>
+   
+      <td class="text-center cor-table-transaction-th">
+     {{item.produto.preco}}
+      </td>
+   
+  </tr>
+
+
+
+</table>
+        </mat-card-content>
+
+
+        <div class="p-1" >
+
+ <button 
+            mat-raised-button 
+            color="accent"
+             (click)="openLoaderCarregarCartao(valor)"
+           
+            >Imprimir <mat-icon>print</mat-icon></button>
+
+            <button 
+            mat-raised-button 
+            color="primary"
+            [routerLink]="['/caixas/vendas']"
+            >Minhas Vendas <mat-icon>add_box</mat-icon></button>
+</div>
+</mat-card>
+
+
+

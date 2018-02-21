@@ -27,6 +27,7 @@ import { AppConfirmModule } from '../../services/app-confirm/app-confirm.module'
 
 import { CarrinhoComponent } from './produto/carrinho/carrinho.component';
 import { VendasComponent } from './produto/vendas/vendas.component';
+import { DetalheVendaComponent } from './produto/detalhe/detalhe-venda.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,7 @@ import { VendasComponent } from './produto/vendas/vendas.component';
     CommonDirectivesModule,
     RouterModule.forChild(CaixaRoutes)
   ],
-  declarations: [CarrinhoComponent,VendasComponent],
+  declarations: [CarrinhoComponent,VendasComponent,DetalheVendaComponent],
   providers:[]
 })
 export class CaixaModule { }
