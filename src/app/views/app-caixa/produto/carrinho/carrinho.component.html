@@ -1,6 +1,7 @@
 <mat-card class="p-0">
-    <mat-card-title class="">
-        <div class="card-title-text">Carrinho de Compra</div>
+    <mat-card-title class="mat-bg-primary">
+     
+        <div class="card-title-text"><mat-icon>shopping_cart</mat-icon> - Dados da Compra</div>
         <mat-divider></mat-divider>
     </mat-card-title>
     <mat-card-content>
@@ -26,11 +27,11 @@
                                   </div>
                               </div>
 
-                              <button 
+                              <button class="btn-search" 
                               mat-raised-button 
-                              color="primary" 
+                             
                               (click)="openLoaderPesquisarProduto(cod)"
-                              >Pesquisar Produto</button>
+                              >Pesquisar Produto <mat-icon>search</mat-icon></button>
                             
                           </form>
                       </div>
@@ -42,7 +43,7 @@
                                       <div class="pb-1">
                                           <mat-form-field class="full-width">
                                               <input
-                                              
+                                              [(ngModel)]="codCartao"
                                               matInput
                                               name="id"
                                               placeholder="Código do cartão "
@@ -55,11 +56,11 @@
                                   </div>
                               </div>
 
-                              <button 
+                              <button class="btn-search" 
                               mat-raised-button 
-                              color="accent" 
-                              (click)="openLoaderPesquisarProduto(cod)"
-                              >Pesquisar Cartão</button>
+                              
+                              (click)="openLoaderPesquisarCartao(codCartao)"
+                              >Pesquisar Cartão <mat-icon>search</mat-icon></button>
                             
                           </form>
 
@@ -70,23 +71,110 @@
                   </div>
             </div>
 
-
-
-
-
-
-
-
-
-
     </mat-card-content>
-
 
 </mat-card>
 
+
+<!-- View Client-->
+<mat-card class="p-0" *ngIf="conta">
+    <mat-card-title class="mat-bg-primary">
+             <div class="card-title-text"><p><mat-icon>assignment_ind</mat-icon> Dados do Cliente</p>
+             </div>
+    </mat-card-title>
+     
+        <mat-card-content  >
+              <div class="pb-1">
+                 <div fxLayout="row" fxLayoutWrap="wrap">
+                      <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                                        <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+
+                                            <div class=" propic text-center">
+                                                <img src="assets/images/{{conta.client.url}}" alt="" width="90" height="90">
+                                   <div class="profile-title text-center mb-1">
+        <div class="main-title"> <b>{{conta.client.name}}</b></div>
+        <div class="subtitle mb-05">Nº Conta : <b>{{conta.cod}}</b></div>
+        <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
+        <div class="text-muted"></div>
+          <div class="profile-actions text-center mb-1">
+            <div *ngIf="conta.cartao">
+                <button mat-raised-button style="background-color: green; color:#fff;">Cartão Habilitado</button>
+            </div>
+             <div *ngIf="!conta.cartao">
+                <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
+            </div>        
+          </div>
+      </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+
+                                    <!-- VIEW DOS DEPENDENTES -->
+                                    <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
+
+                                        <div fxLayout="column" fxFlex="100" fxFlex.gt-md="150">
+                                            <mat-card class="default">
+                                                 <mat-card-title  class="mat-bg-primary">  
+                                                    <div class="card-title-text">Dependentes
+                                                    </div>
+                                                    
+                                                  </mat-card-title>
+                                                  <p style="margin-left: 5px;" *ngIf="dependentes.length==0">
+                                                        Nao existem dependentes!
+                                                    </p>
+                                                 <mat-card-content class="p-1" *ngIf="!dependentes.length==0">
+                                                    <mat-list class="compact-list mb-1">
+                                                         <mat-list-item class="" *ngFor=" let dependente of dependentes">
+                                                            <img mat-list-avatar class="mr-1" src="assets/images/{{dependente.url}}" alt="" width="90" height="90" >
+
+                                                              <div fxLayout="row" fxFlex="100">
+                                                              <h6 class="m-0 mr-1">{{dependente.nome}}</h6>
+                                                              <span fxFlex></span>
+                                                             
+                                                              <span fxFlex></span>
+                                                              <small class="text-muted mr-1">trt</small>
+                                                            </div>
+
+                                                         </mat-list-item>
+                                                    </mat-list>
+      
+                                                </mat-card-content>
+                                             </mat-card>
+                                        </div>
+                                    </div>
+                                    <!--FIM  VIEW DOS DEPENDENTES -->
+                                </div>
+                                    </div>
+           
+
+            <button 
+            mat-raised-button 
+            class="btn-payment" 
+            (click)="processarVenda()">Confirmar Pagamento 
+            <mat-icon>monetization_on</mat-icon>
+            </button>
+
+            <button 
+            mat-raised-button 
+            class="btn-payment-cancel" 
+            (click)="reload()"
+            >Cancelar Pagamento 
+            <mat-icon>remove</mat-icon>
+            </button>
+   
+        </mat-card-content>
+     
+</mat-card>
+
+
+<!-- fim view Client -->
+
+
+
 <mat-card class="p-0" *ngIf="!produtos.length==0">
-    <mat-card-title class="">
-        <div class="card-title-text">Meus Produtos
+    <mat-card-title class="mat-bg-primary">
+
+        <div class="card-title-text"><mat-icon>shopping_cart</mat-icon> Meus Produtos
 
 <mat-card-content>
                           <P  style="float: right; margin-top: 30px; font-family: monospace; font-size: 20px;">Total: R$ {{total}}</P>
@@ -107,7 +195,8 @@
   <tr>
   	<th class="text-center cor-table-transaction-th">Cod de Barras</th>
     <th class="text-center cor-table-transaction-th">Descricao</th>
-    <th class="text-center cor-table-transaction-th">Preço</th>
+     <th class="text-center cor-table-transaction-th">Qtd</th>
+    <th class="text-center cor-table-transaction-th">Valor Un</th>
     <th class="text-center cor-table-transaction-th">Remover</th>
 
 	
@@ -120,13 +209,16 @@
    		<td class="text-center cor-table-transaction-th">
 		 {{produto.descricao}}
    		</td>
+      <td class="text-center cor-table-transaction-th">
+      1 
+      </td>
    		<td class="text-center cor-table-transaction-th">
 		 {{produto.preco}}
    		</td>
    		
    		<td class="text-center ">
    	    <!--<button mat-fab color="default" class="mr-1"><mat-icon>create</mat-icon></button>-->
-		<button [routerLink]="['/']" mat-mini-fab color="warn" class="mr-1"><mat-icon>clear</mat-icon></button>
+		<button (click)="removerProdutoCarrinho(produto.id)" mat-mini-fab color="warn" class="mr-1"><mat-icon>clear</mat-icon></button>
    		</td>
 	</tr>
 

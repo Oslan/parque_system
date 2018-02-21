@@ -59,17 +59,10 @@ export class AssociacaoContaComponent implements OnInit {
               private loader:AppLoaderService,
               private confirmService: AppConfirmService) {
 
-    //console.log("Constructor");
-
-   //console.log(this.transactionsService.addClients());
   //console.log(this.transactionsService.addContas());
   //console.log(this.transactionsService.addProducts());
-  //  console.log(this.transactionsService.addDependente());
-  // this.transactionsService.emptyTransactionsContaCartao();
-  //this.transactionsService.emptyTransactions();
-   //console.log(this.transactionsService.loadClientsSemcontas());
-   //console.log(this.transactionsService.loadClients());
-   //console.log(this.transactionsService.loadTransactionOpenAccount());
+ // console.log(this.transactionsService.addDependente());
+
   }
 
   ngOnInit() {

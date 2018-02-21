@@ -2,6 +2,10 @@ import { Component, OnInit,OnChanges,SimpleChanges, ViewChild } from '@angular/c
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Produto } from '../../../../shared/Produto';
+import { Conta } from '../../../../shared/Conta';
+import { Dependente } from '../../../../shared/Dependente';
+import { Location } from '@angular/common';
+
 
 import { NgForm } from '@angular/forms';
 import {  Router } from '@angular/router';
@@ -20,16 +24,18 @@ export class CarrinhoComponent implements OnInit {
  
  produtos:Produto[]=[];
  produto:Produto;
+ conta:Conta;
  total:number=0.0;
+ dependentes:Dependente[];
+
 
   constructor(private transactionsService:TransactionsService,
-  			  private loader:AppLoaderService) {
-    
-  }
+  			      private loader:AppLoaderService,
+              private location:Location
+             ){}
 
-  ngOnInit() {
-
-  
+  ngOnInit(){
+    console.log("INIT");
   }
 
 openLoaderPesquisarProduto(codigo:string) {
@@ -48,17 +54,65 @@ openLoaderPesquisarProduto(codigo:string) {
       	this.transactionsService.openSnackBar("Produto não cadastrado","Fechar");
   	}	 else{
       this.produtos=this.transactionsService.addCarrinho(this.produtos,this.produto);
-   this.total=0.0;
-      this.produtos.forEach((obj,index,objs)=>{
-       
-         this.total+=obj.preco;
-      });
+      this.total = this.transactionsService.getTotal(this.produtos);
+
       console.log("Cart" +this.produtos);
     }
+  }
+
+  removerProdutoCarrinho(id){
+    this.produtos= this.transactionsService.removeCarrinho(this.produtos,parseInt(id));
+    this.total = this.transactionsService.getTotal(this.produtos);
+  }
+
+  openLoaderPesquisarCartao(codigo:string) {
+    this.loader.open("Pesquisando Cartão...");
+      setTimeout(() => {
+
+        this.pesquisarCartao(codigo);
+       
+        this.loader.close();
+      }, 200);
+  }
+
+  pesquisarCartao(codigo:string){
+    
+     this.conta= this.transactionsService.loadAccountsByCod(codigo);
+     if(this.conta){
+        console.log(this.conta);
+        this.dependentes = this.transactionsService.loadDependentesByIdClient(this.conta.client.id);
+     }else{
+       this.showSnackBar();    
+      }
+    
 
   }
 
-  
+  processarVenda(){
+    console.log("Processo Venda");
+    if((this.conta.saldo - this.total) >= this.conta.saldo){
+       this.transactionsService.finalizarVenda(this.conta,this.total,this.produtos);
+    }
+    else{
+        this.showSnackBarVenda();
+    }
+   
+  }
+
+  showSnackBar(){
+     this.transactionsService.openSnackBar("Nenhum cartão encontrado. Verifique o número e tente novamente!","Fechar");
+  }
+
+  showSnackBarVenda(){
+    this.transactionsService.openSnackBar("Saldo insuficiente no cartão!","Fechar");
+  }
+
+
+  reload(){
+ 
+    location.reload();
+
+  }
 
  
 

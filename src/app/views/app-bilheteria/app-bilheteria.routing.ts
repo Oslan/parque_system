@@ -14,7 +14,7 @@ export const BilheteriaRoutes: Routes = [
       		component: RecargaFormComponent,
       		data: { title: 'Recarga', breadcrumb: 'RECARGA' }
       	},
-      	{
+      {
       		path: 'transacoes',
      		component: TransacoesComponent,
      		data: { title: 'Transacoes', breadcrumb: 'TRANSACOES' }

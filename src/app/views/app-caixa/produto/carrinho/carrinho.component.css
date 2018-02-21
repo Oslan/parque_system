@@ -1,0 +1,24 @@
+.btn-search{
+	background-color: #fff;
+}
+.btn-search:hover{
+	background-color: #3f51b5;
+	color: #fff;
+}
+.btn-payment{
+	background-color: #ffc107;
+	
+}
+
+.btn-payment-cancel{
+background-color: #e55039;
+	color: #fff;
+}
+.btn-payment-cancel:hover{
+background-color: #fff;
+	color: #000;
+}
+.btn-payment:hover{
+	background-color: #fff;
+	color: #000;
+}

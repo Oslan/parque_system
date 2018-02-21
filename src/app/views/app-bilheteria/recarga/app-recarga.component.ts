@@ -23,12 +23,6 @@ export class RecargaFormComponent implements OnInit {
  selectedOption;
  dependentes:Dependente[];
 
- c=[
-    {name:'Artur Oliveira',url:'crianca01.jpg'},
-    {name:'Alan Marques',url:'crianca02.jpg'},
-    {name:'João Macedo',url:'crianca03.jpg'},
-    {name:'Gabriel do Nascimento',url:'crianca04.jpg'}
-    ];
 
  @ViewChild('formCartao') formTarefa:NgForm;
  val;

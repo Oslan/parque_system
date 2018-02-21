@@ -7,6 +7,8 @@ import { Cartao } from '../../shared/Cartao';
 import { Conta } from '../../shared/Conta';
 import { Endereco } from '../../shared/Endereco';
 import { Produto } from '../../shared/Produto';
+import { Venda } from '../../shared/Venda';
+import { ItensVenda } from '../../shared/ItensVenda';
 import { TipoTransacaoConta } from '../../shared/TipoTransacaoConta';
 import { TransacaoContaCartao } from '../../shared/TransacaoContaCartao';
 import { TransacaoConta } from '../../shared/TransacaoConta';
@@ -96,6 +98,17 @@ export class TransactionsService{
           return trans.find(transacao => transacao.id===id);
   }
 
+  loadTransactionItensVenda():ItensVenda[]{
+        const transacoes = localStorage['transactions_itens_venda'];
+          return transacoes ? JSON.parse(transacoes) : [];
+  }
+
+   loadTransactionVenda():Venda[]{
+        const transacoes = localStorage['transactions_venda'];
+          return transacoes ? JSON.parse(transacoes) : [];
+  }
+  
+
   /**
   *FINDS
   */
@@ -108,10 +121,24 @@ export class TransactionsService{
   /**
   *ADDS
   */
+
+  getTotal(produtos:Produto[]){
+      var total:number=0.0;
+          produtos.forEach((obj,index,objs)=>{
+            total+=obj.preco;
+          })
+
+      return total;
+  }
+
   addCarrinho(produtos:Produto[],produto:Produto):Produto[]{
     produtos.push(produto);
     return produtos;
-    }
+   }
+
+  removeCarrinho(produtos:Produto[],id):Produto[]{
+    return produtos.filter(produto=> produto.id != id);
+  }
 
   addTransaction(transacao:Transacao):void{
         const transactions=this.loadTransactions();
@@ -127,11 +154,33 @@ export class TransactionsService{
             localStorage['transactions_conta_cartao']= JSON.stringify(transactions);
   }
 
+    updateTransactionConta(conta:Conta){
+           var contas = this.loadAccounts();
+             contas.forEach((obj,index,objs)=>{
+                objs[index]=conta;
+
+             })
+
+             localStorage['accounts']= JSON.stringify(contas);
+             
+    }
     addTransactionConta(transacao:TransacaoConta):void{
         const transactions=this.loadTransactionsConta();
           transactions.push(transacao);
 
             localStorage['transactions_conta']= JSON.stringify(transactions);
+  }
+
+  addTransactionItensVenda(itensVenda:ItensVenda):void{
+        const transactions=this.loadTransactionItensVenda();
+          transactions.push(itensVenda);
+            localStorage['transactions_itens_venda']= JSON.stringify(transactions);
+  }
+
+  addTransactionVenda(venda:Venda):void{
+        const transactions=this.loadTransactionVenda();
+          transactions.push(venda);
+            localStorage['transactions_venda']= JSON.stringify(transactions);
   }
 
   addProducts(){
@@ -344,7 +393,50 @@ export class TransactionsService{
       localStorage['accounts'] = JSON.stringify(contas);
   }
 
-  finalizarProcessoConta(conta:Conta,recarga:number):Conta{
+  finalizarVenda(conta:Conta,valor:number,produtos:Produto[]){
+
+    console.log(typeof valor);
+   
+    conta.saldo-=valor;
+    let venda = new Venda(new Date().getTime(),
+                          new Date().getTime().toString()+'v',
+                          new Date(),
+                          conta);
+
+    this.updateTransactionConta(conta);
+    
+    for (var i = 0; i < produtos.length; i++) {
+          this.addTransactionItensVenda(new ItensVenda(new Date().getTime()+i,
+                                                       new Date().getTime()+i+"iv",
+                                                       produtos[i],
+                                                       venda));
+
+    }
+
+      this.addTransactionVenda(venda);
+      var transacaoConta = new TransacaoConta(new Date().getTime(),
+                                                         new Date().getTime().toString()+'cc',
+                                                         new Date(),
+                                                         conta,
+                                                         TipoTransacaoConta.MENSAGEM_COMPRA);
+      var transacao = new Transacao(new Date().getTime(),
+                                           new Date().getTime().toString()+'c',
+                                           new Date(),valor,
+                                           conta);
+
+                       this.addTransaction(transacao);
+                       transacaoConta.transacao=transacao;
+
+
+       this.addTransactionConta(transacaoConta);
+
+
+       console.log(this.loadTransactionVenda());
+       console.log(this.loadTransactionItensVenda());
+
+  }
+
+  finalizarProcessoConta(conta:Conta,recarga:number){
       var transacaoContaCartao=null;
       var transacao=null;
       var transacaoConta:TransacaoConta=null;
