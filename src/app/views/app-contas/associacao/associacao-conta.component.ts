@@ -61,7 +61,7 @@ export class AssociacaoContaComponent implements OnInit {
 
   //console.log(this.transactionsService.addContas());
   //console.log(this.transactionsService.addProducts());
- // console.log(this.transactionsService.addDependente());
+  //console.log(this.transactionsService.addDependente());
 
   }
 

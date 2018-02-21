@@ -163,7 +163,9 @@ export class TransactionsService{
     updateTransactionConta(conta:Conta){
            var contas = this.loadAccounts();
              contas.forEach((obj,index,objs)=>{
-                objs[index]=conta;
+                if(obj.id===conta.id){
+                    objs[index]=conta;
+                }
 
              })
 
@@ -439,6 +441,8 @@ export class TransactionsService{
 
        console.log(this.loadTransactionVenda());
        console.log(this.loadTransactionItensVenda());
+
+       return venda;
 
   }
 

@@ -4,6 +4,8 @@ import { CustomValidators } from 'ng2-validation';
 import { Produto } from '../../../../shared/Produto';
 import { Conta } from '../../../../shared/Conta';
 import { Dependente } from '../../../../shared/Dependente';
+import { Venda } from '../../../../shared/Venda';
+
 import { Location } from '@angular/common';
 
 
@@ -25,13 +27,14 @@ export class CarrinhoComponent implements OnInit {
  produtos:Produto[]=[];
  produto:Produto;
  conta:Conta;
+ venda:Venda;
  total:number=0.0;
  dependentes:Dependente[];
 
 
   constructor(private transactionsService:TransactionsService,
   			      private loader:AppLoaderService,
-              private location:Location
+              private router:Router
              ){}
 
   ngOnInit(){
@@ -75,6 +78,16 @@ openLoaderPesquisarProduto(codigo:string) {
       }, 200);
   }
 
+   openLoaderProcessarVenda() {
+    this.loader.open("Processando Venda...");
+      setTimeout(() => {
+
+       this.processarVenda();
+       
+        this.loader.close();
+      }, 1000);
+  }
+
   pesquisarCartao(codigo:string){
     
      this.conta= this.transactionsService.loadAccountsByCod(codigo);
@@ -91,7 +104,8 @@ openLoaderPesquisarProduto(codigo:string) {
   processarVenda(){
     console.log("Processo Venda");
     if((this.conta.saldo - this.total) <= this.conta.saldo){
-       this.transactionsService.finalizarVenda(this.conta,this.total,this.produtos);
+       this.venda = this.transactionsService.finalizarVenda(this.conta,this.total,this.produtos);
+       this.router.navigate(['/caixas/itens-venda/detalhe/'+this.venda.id]);
     }
     else{
         this.showSnackBarVenda();
