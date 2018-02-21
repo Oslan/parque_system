@@ -613,8 +613,8 @@ export class NavigationService {
       icon: 'account_box',
       state: 'caixas',
        sub: [
-        {name: 'VENDAS PRODUTOS', state: 'carrinho'}
-        
+        {name: 'VENDAS PRODUTOS', state: 'carrinho'},
+        {name: 'VENDAS', state: 'vendas'}
       
       ]
     }

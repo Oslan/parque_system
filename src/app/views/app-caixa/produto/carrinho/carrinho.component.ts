@@ -107,11 +107,8 @@ openLoaderPesquisarProduto(codigo:string) {
     this.transactionsService.openSnackBar("Saldo insuficiente no cartão!","Fechar");
   }
 
-
   reload(){
- 
     location.reload();
-
   }
 
  

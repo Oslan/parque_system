@@ -42,6 +42,7 @@ export class TransactionsService{
           return dependentes.filter(dependente=> dependente.client.id===id);
   }
 
+
   loadTransactionsContaCartao():TransacaoContaCartao[]{
         const transacoes = localStorage['transactions_conta_cartao'];
           return transacoes ? JSON.parse(transacoes) : [];
