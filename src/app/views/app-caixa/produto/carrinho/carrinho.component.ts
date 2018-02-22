@@ -15,6 +15,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
 import { AppLoaderService } from '../../../../services/app-loader/app-loader.service';
+import { AppConfirmService } from '../../../../services/app-confirm/app-confirm.service';
 import { TransactionsService } from '../../../../services/transactions/transactions.service';
 
 @Component({
@@ -30,10 +31,12 @@ export class CarrinhoComponent implements OnInit {
  venda:Venda;
  total:number=0.0;
  dependentes:Dependente[];
-
+  selectedOption;
+    
 
   constructor(private transactionsService:TransactionsService,
   			      private loader:AppLoaderService,
+              private confirmService:AppConfirmService,
               private router:Router
              ){}
 
@@ -79,13 +82,18 @@ openLoaderPesquisarProduto(codigo:string) {
   }
 
    openLoaderProcessarVenda() {
-    this.loader.open("Processando Venda...");
-      setTimeout(() => {
-
-       this.processarVenda();
-       
-        this.loader.close();
-      }, 1000);
+     this.confirmService.confirm("Confirmar",
+       "Realizar Venda ?")
+       .subscribe((result) => {
+         this.selectedOption = result;
+           if (this.selectedOption) {
+               this.loader.open("Processando Venda...");
+                 setTimeout(() => {
+                   this.processarVenda();
+                   this.loader.close();
+                  }, 1000);
+           }
+       });
   }
 
   pesquisarCartao(codigo:string){

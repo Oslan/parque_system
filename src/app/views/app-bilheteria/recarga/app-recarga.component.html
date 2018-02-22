@@ -1,72 +1,69 @@
 <mat-card class="p-0">
-    <mat-card-title class="mat-bg-primary">
-        <div class="card-title-text">Rercarga Cartão</div>
-        <mat-divider></mat-divider>
-    </mat-card-title>
-    <mat-card-content>
-        <form  #formCartao="ngForm">
-            <div fxLayout="row" fxLayoutWrap="wrap">
-                <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
-                    <div class="pb-1">
-                        <mat-form-field class="full-width">
-                            <input class="cartao-style" 
-                            [(ngModel)]="val"
-                            matInput
-                            name="id"
-                            placeholder="Código do cartão "
-                            value="">
-                        </mat-form-field>
-                        <small> </small>
-                        <small>
-                         </small>
-                    </div> 
-                </div>
-            </div>
+  <mat-card-title class="mat-bg-primary">
+    <div class="card-title-text">Rercarga Cartão
+    </div>
+      <mat-divider></mat-divider>
+  </mat-card-title>
+        <mat-card-content>
+          <form  #formCartao="ngForm">
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                  <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
+                      <div class="pb-1">
+                          <mat-form-field class="full-width">
+                              <input class="cartao-style" 
+                              [(ngModel)]="val"
+                              matInput
+                              name="id"
+                              placeholder="Código do cartão "
+                              value="">
+                          </mat-form-field>
+                            <small></small>
+                            <small></small>
+                      </div> 
+                  </div>
+              </div>
 
-            <button 
-            mat-raised-button 
-            class="cartao-btn-style"
-            (click)="openLoaderPesquisarCartao(val)"
-            >Pesquisar <mat-icon>search</mat-icon></button>
-          
-        </form>
-    </mat-card-content>
-
-
+              <button 
+                  mat-raised-button 
+                  class="cartao-btn-style"
+                  (click)="openLoaderPesquisarCartao(val)">
+                  Pesquisar 
+                  <mat-icon>search</mat-icon>
+              </button>
+          </form>
+        </mat-card-content>
 </mat-card>
-
 
 <mat-card class="p-0" *ngIf="conta">
     <mat-card-title class="mat-bg-primary">
-             <div class="card-title-text"><p><mat-icon>assignment_ind</mat-icon> Dados do Cliente</p>
-             </div>
+        <div class="card-title-text">
+          <p><mat-icon>assignment_ind</mat-icon> Dados do Cliente</p>
+        </div>
     </mat-card-title>
-     
         <mat-card-content  >
-              <div class="pb-1">
-                 <div fxLayout="row" fxLayoutWrap="wrap">
-                      <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
-                                        <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
-
-                                            <div class=" propic text-center">
-                                                <img src="assets/images/{{conta.client.url}}" alt="" width="90" height="90">
-                                   <div class="profile-title text-center mb-1">
-        <div class="main-title"> <b>{{conta.client.name}}</b></div>
-        <div class="subtitle mb-05">Nº Conta : <b>{{conta.cod}}</b></div>
-        <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
-        <div class="text-muted"></div>
-          <div class="profile-actions text-center mb-1">
-            <div *ngIf="conta.cartao">
-                <button mat-raised-button style="background-color: green; color:#fff;">Cartão Habilitado</button>
-            </div>
-             <div *ngIf="!conta.cartao">
-                <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
-            </div>        
-          </div>
-      </div>
-                                            </div>
-                                        </mat-card>
-                                    </div>
+            <div class="pb-1">
+              <div fxLayout="row" fxLayoutWrap="wrap">
+                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                      <mat-card style="" class="text-center profile-sidebar mb-1 pb-0">
+                        <div class=" propic text-center">
+                          <img src="assets/images/{{conta.client.url}}" alt="" width="90" height="90">
+                        <div class="profile-title text-center mb-1">
+                          <div class="main-title"> <b>{{conta.client.name}}</b></div>
+                          <div class="subtitle mb-05">Nº Conta : <b>{{conta.cod}}</b></div>
+                          <div class="subtitle mb-05">Nº Cartão : <b>{{conta.cartao.identificacao}}</b></div>
+                            <div class="text-muted"></div>
+                              <div class="profile-actions text-center mb-1">
+                                <div *ngIf="conta.cartao">
+                                  <button mat-raised-button style="background-color: green; color:#fff;">Cartão Habilitado</button>
+                                </div>
+                                <div *ngIf="!conta.cartao">
+                                  <button mat-raised-button style="background-color: red; color:#fff;" >Sem Cartão</button>
+                                </div>        
+                              </div>
+                        </div>
+                        </div>
+                      </mat-card>
+                  </div>
 
                                     <!-- VIEW DOS DEPENDENTES -->
                                     <div fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="50">
@@ -131,7 +128,7 @@
                             [(ngModel)]="valor"
                             name="valor"
                             matInput
-                            placeholder="Valor da recarga (Min Length: 10, Max Length: 10)"
+                            placeholder="Valor da recarga"
                             value="">
                         </mat-form-field>
                      

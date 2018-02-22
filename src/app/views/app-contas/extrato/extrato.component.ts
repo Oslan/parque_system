@@ -4,7 +4,6 @@ import { CustomValidators } from 'ng2-validation';
 import { Conta } from '../../../shared/Conta';
 import { TransacaoConta } from '../../../shared/TransacaoConta';
 
-
 import { TransactionsService } from '../../../services/transactions/transactions.service';
 import { AppLoaderService } from '../../../services/app-loader/app-loader.service';
 import { AppConfirmService } from '../../../services/app-confirm/app-confirm.service';
@@ -25,7 +24,7 @@ export class ExtratoFormComponent implements OnInit {
 
  
   constructor(private transactionsService:TransactionsService,
-  			  private loader:AppLoaderService) { }
+  			      private loader:AppLoaderService) { }
 
   ngOnInit() {}
 
@@ -37,7 +36,7 @@ export class ExtratoFormComponent implements OnInit {
 			}, 500);
   	}
 
-    pesquisarCartao(id){
+  pesquisarCartao(id){
 		
   		this.conta = this.transactionsService.loadAccountsByCod(id);
   		

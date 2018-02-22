@@ -2,3 +2,7 @@
 .formatacao-extrato{
 	font-family: monospace;
 }
+
+.extrato-style{
+color:#576574; font-size: 18px; font-family: monospace;
+}

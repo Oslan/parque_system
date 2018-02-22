@@ -38,7 +38,7 @@ export class RecargaFormComponent implements OnInit {
               private router:Router,
               //private route:ActivatedRoute,
               private loader:AppLoaderService,
-              public confirmService: AppConfirmService) { 
+              private confirmService: AppConfirmService) { 
 
   }
 
@@ -65,8 +65,6 @@ export class RecargaFormComponent implements OnInit {
               this.carregarCartao(val);
               this.loader.close();
             }, 500)
-        }else{
-          console.log("NAO");
         }
       });
   }

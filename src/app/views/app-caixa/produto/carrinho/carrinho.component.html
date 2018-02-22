@@ -7,10 +7,10 @@
     <mat-card-content>
             <div class="pb-1">
                  <div fxLayout="row" fxLayoutWrap="wrap">
-                      <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 ">
+                      <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1 ">
                           <form>
                               <div fxLayout="row" fxLayoutWrap="wrap">
-                                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                  <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
                                       <div class="pb-1">
                                           <mat-form-field class="full-width">
                                               <input
@@ -20,7 +20,8 @@
                                               name="cod"
                                               tabindex="0"
                                               placeholder="Código do Produto "
-                                              value="">
+                                              value=""
+                                              class="cartao-style">
                                           </mat-form-field>
                                           <small> </small>
                                           <small>
@@ -123,10 +124,10 @@
 
   <div class="pb-1">
                  <div fxLayout="row" fxLayoutWrap="wrap">
-   <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1 " *ngIf="!produtos.length==0">
+   <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1 " *ngIf="!produtos.length==0">
                         <form>
                               <div fxLayout="row" fxLayoutWrap="wrap">
-                                  <div fxFlex="100" fxFlex.gt-xs="50" class="pr-1">
+                                  <div fxFlex="100" fxFlex.gt-xs="100" class="pr-1">
                                       <div class="pb-1">
                                           <mat-form-field class="full-width">
                                               <input
@@ -136,7 +137,8 @@
                                               tabindex="1"
                                               focus
                                               placeholder="Código do cartão "
-                                              value="">
+                                              value=""
+                                              class="cartao-style">
                                           </mat-form-field>
                                           <small> </small>
                                           <small>
