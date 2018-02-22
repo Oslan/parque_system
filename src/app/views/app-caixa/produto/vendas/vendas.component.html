@@ -2,9 +2,9 @@
 <table class="table table-striped">
   <tr>
   	<th class="text-center cor-table-transaction-th">Cod Transação</th>
-    <th class="text-center cor-table-transaction-th">Nº Cartão</th>
-    <th class="texte-center cor-table-transaction-th">Data/Hora</th>
-    <th class="texte-center cor-table-transaction-th">Comprovante</th>
+    <th class="cor-table-transaction-th">Cliente</th>
+    <th class="cor-table-transaction-th">Data/Hora</th>
+    <th class="text-center cor-table-transaction-th">Comprovante</th>
   	
   </tr>
    <tr *ngFor="let transacao of transacoes">
@@ -16,9 +16,7 @@
    		<td class="">
 		 {{transacao.conta.client.name}}
    		</td>
-   		<td class="text-center cor-table-transaction-th">
-		 {{transacao.conta.cartao.identificacao}}
-   		</td>
+   		
    		<td class="corData">
 		 {{transacao.data | date:"dd/MM/yy - hh:mm:ss a" }}
    		</td>

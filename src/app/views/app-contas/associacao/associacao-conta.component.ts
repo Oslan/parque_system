@@ -74,16 +74,13 @@ export class AssociacaoContaComponent implements OnInit {
       .startWith(null)
       .map(object => this.filterClients(object));
 
-
     this.firstFormGroup = this.fb.group({
       firstCtrl: ['', Validators.required]
     });
+    
     this.secondFormGroup = this.fb.group({
      secondCtrl: ['', Validators.nullValidator]
     });
-
-   
-   
 
   }
 

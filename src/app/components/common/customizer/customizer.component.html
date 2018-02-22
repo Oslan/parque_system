@@ -1,9 +1,12 @@
 <div id="app-customizer">
+
   <div class="handle" *ngIf="!isCustomizerOpen">
   
     <button 
+   
     mat-fab
     color="warn" 
+    tabindex="-1" 
     (click)="isCustomizerOpen = true">
       <mat-icon>settings</mat-icon>
     </button>

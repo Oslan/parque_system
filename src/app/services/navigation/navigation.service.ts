@@ -610,7 +610,7 @@ export class NavigationService {
       name: 'CAIXA',
       type: 'dropDown',
       tooltip: 'Caixa',
-      icon: 'account_box',
+      icon: 'personal_video',
       state: 'caixas',
        sub: [
         {name: 'VENDAS PRODUTOS', state: 'carrinho'},
